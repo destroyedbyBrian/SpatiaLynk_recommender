@@ -1,0 +1,530 @@
+interaction_id,user_id,user_name,poi_id,poi_name,interaction_type,value,timestamp,distance_km,interest_match_score
+int_000107,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_467_ALFA_H_MART,ALFA H MART,search,1,9/8/2025 13:20,8.6,0.44
+int_000083,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_529_Cheers,Cheers,search,1,9/8/2025 13:37,5.49,0.22
+int_000423,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1447_Clap_Cafe,Clap Cafe,visit,1,9/8/2025 19:26,12.63,0.51
+int_000424,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1447_Clap_Cafe,Clap Cafe,rating,3,9/8/2025 19:57,12.63,0.51
+int_000052,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_4010_Parkway_Shenton_Medical_Clinic,Parkway Shenton Medical Clinic,visit,1,9/8/2025 22:39,14.05,0.44
+int_000053,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_4010_Parkway_Shenton_Medical_Clinic,Parkway Shenton Medical Clinic,rating,3,9/8/2025 23:08,14.05,0.44
+int_000314,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_331_Cheers,Cheers,visit,1,9/8/2025 23:51,4.69,0.26
+int_000407,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_933_Nana_&_Bird,Nana & Bird,visit,1,9/9/2025 1:26,11.17,0.26
+int_000408,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_933_Nana_&_Bird,Nana & Bird,rating,3,9/9/2025 1:45,11.17,0.26
+int_000315,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_331_Cheers,Cheers,rating,3,9/9/2025 1:51,4.69,0.26
+int_000105,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_467_ALFA_H_MART,ALFA H MART,visit,1,9/9/2025 6:20,8.6,0.44
+int_000106,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_467_ALFA_H_MART,ALFA H MART,rating,3,9/9/2025 7:32,8.6,0.44
+int_000081,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_529_Cheers,Cheers,visit,1,9/9/2025 8:37,5.49,0.22
+int_000082,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_529_Cheers,Cheers,rating,3,9/9/2025 9:29,5.49,0.22
+int_000040,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1217_Da_Paolo_Gastronomia,Da Paolo Gastronomia,search,1,9/9/2025 19:31,12.2,0.22
+int_000489,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1468_Venture_Drive_Coffee,Venture Drive Coffee,visit,1,9/10/2025 5:06,10.02,0.44
+int_000038,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1217_Da_Paolo_Gastronomia,Da Paolo Gastronomia,visit,1,9/10/2025 21:31,12.2,0.22
+int_000417,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_886_Zegna,Zegna,search,1,9/10/2025 22:06,10.73,0.26
+int_000039,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1217_Da_Paolo_Gastronomia,Da Paolo Gastronomia,rating,2,9/10/2025 23:14,12.2,0.22
+int_000415,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_886_Zegna,Zegna,visit,1,9/11/2025 5:06,10.73,0.26
+int_000099,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_847_Louis_Vuitton,Louis Vuitton,visit,1,9/11/2025 5:40,5.47,0.22
+int_000416,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_886_Zegna,Zegna,rating,3,9/11/2025 6:34,10.73,0.26
+int_000100,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_847_Louis_Vuitton,Louis Vuitton,rating,3,9/11/2025 7:25,5.47,0.22
+int_000179,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3966_Hyperbaric_Medical_Services,Hyperbaric Medical Services,visit,1,9/11/2025 7:41,4.94,0.48
+int_000062,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1467_Ten,Ten,search,1,9/11/2025 16:13,13.15,0.22
+int_000425,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1117_Foot_code,Foot code,visit,1,9/11/2025 21:48,5.53,0.26
+int_000358,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_487_Lion_View_Mini-mart,Lion View Mini-mart,visit,1,9/11/2025 21:49,7.88,0.44
+int_000359,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_487_Lion_View_Mini-mart,Lion View Mini-mart,rating,3,9/11/2025 21:54,7.88,0.44
+int_000221,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_4197_Storm_Athletic_Club,Storm Athletic Club,visit,1,9/12/2025 7:53,5.88,0.24
+int_000222,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_4197_Storm_Athletic_Club,Storm Athletic Club,rating,4,9/12/2025 9:45,5.88,0.24
+int_000524,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1361_Aura_Loft,Aura Loft,search,1,9/12/2025 11:44,5.07,0.51
+int_000305,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1673_Hong_Kong_Dim_Sum_Shop,Hong Kong Dim Sum Shop,search,1,9/12/2025 13:38,3.81,0.37
+int_000060,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1467_Ten,Ten,visit,1,9/12/2025 22:13,13.15,0.22
+int_000061,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1467_Ten,Ten,rating,2,9/12/2025 23:21,13.15,0.22
+int_000355,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_3818_Bakery_Degree,Bakery Degree,visit,1,9/13/2025 1:29,1.03,0.22
+int_000132,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_456_H_M_Hussain,H M Hussain,visit,1,9/13/2025 2:21,2.52,0.22
+int_000133,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_456_H_M_Hussain,H M Hussain,rating,3,9/13/2025 4:03,2.52,0.22
+int_000522,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1361_Aura_Loft,Aura Loft,visit,1,9/13/2025 8:44,5.07,0.51
+int_000523,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1361_Aura_Loft,Aura Loft,rating,4,9/13/2025 10:34,5.07,0.51
+int_000512,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1389_DRubinah__Punggol,DRubinah  Punggol,visit,1,9/13/2025 21:15,6.87,0.26
+int_000227,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1366_Whampoa_Soya_Bean_&_Grass_Jelly_Drinks,Whampoa Soya Bean & Grass Jelly Drinks,visit,1,9/13/2025 21:28,5.99,0.24
+int_000228,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1366_Whampoa_Soya_Bean_&_Grass_Jelly_Drinks,Whampoa Soya Bean & Grass Jelly Drinks,rating,3,9/13/2025 23:23,5.99,0.24
+int_000366,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1314_Starbucks,Starbucks,visit,1,9/14/2025 2:04,8.28,0.22
+int_000120,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_406_Cheers,Cheers,visit,1,9/14/2025 5:19,4.67,0.22
+int_000303,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1673_Hong_Kong_Dim_Sum_Shop,Hong Kong Dim Sum Shop,visit,1,9/14/2025 6:38,3.81,0.37
+int_000304,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1673_Hong_Kong_Dim_Sum_Shop,Hong Kong Dim Sum Shop,rating,2,9/14/2025 7:32,3.81,0.37
+int_000485,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1072_Starbucks,Starbucks,visit,1,9/15/2025 2:26,2.76,0.22
+int_000486,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1072_Starbucks,Starbucks,rating,3,9/15/2025 3:30,2.76,0.22
+int_000255,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4045_Nanyang_Dentist,Nanyang Dentist,visit,1,9/15/2025 23:28,5.76,0.26
+int_000256,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4045_Nanyang_Dentist,Nanyang Dentist,rating,3,9/16/2025 1:07,5.76,0.26
+int_000405,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1483_The_Alley,The Alley,visit,1,9/16/2025 20:49,11.98,0.51
+int_000406,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1483_The_Alley,The Alley,rating,3,9/16/2025 21:38,11.98,0.51
+int_000455,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_1109_Koi_Cafe,Koi Cafe,search,1,9/17/2025 1:07,0.11,0.37
+int_000019,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1164_Unicorn_Kampung_1200,Unicorn Kampung 1200,visit,1,9/17/2025 2:44,14.24,0.22
+int_000020,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1164_Unicorn_Kampung_1200,Unicorn Kampung 1200,rating,2,9/17/2025 3:29,14.24,0.22
+int_000175,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_978_Malabar,Malabar,search,1,9/17/2025 6:49,6.94,0.48
+int_000479,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1571_Ton_Coffee,Ton Coffee,search,1,9/17/2025 9:25,8.86,0.44
+int_000404,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1475_Black_&_White,Black & White,visit,1,9/17/2025 23:05,12.03,0.51
+int_000478,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1571_Ton_Coffee,Ton Coffee,visit,1,9/18/2025 6:25,8.86,0.44
+int_000454,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_1109_Koi_Cafe,Koi Cafe,visit,1,9/18/2025 7:07,0.11,0.37
+int_000174,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_978_Malabar,Malabar,visit,1,9/18/2025 22:49,6.94,0.48
+int_000197,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_954_MB_Jewellery,MB Jewellery,visit,1,9/19/2025 5:23,7.19,0.56
+int_000198,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_954_MB_Jewellery,MB Jewellery,rating,3,9/19/2025 6:03,7.19,0.56
+int_000474,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1548_Monday_Coffee_Bar,Monday Coffee Bar,search,1,9/19/2025 12:35,0.8,0.44
+int_000388,6c32074e-c671-44f7-951a-422b74159885,David,poi_5008_UOB,UOB,visit,1,9/20/2025 4:37,5.77,0.28
+int_000145,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_883_Dakshaini_Silks,Dakshaini Silks,search,1,9/20/2025 14:03,6.28,0.22
+int_000472,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1548_Monday_Coffee_Bar,Monday Coffee Bar,visit,1,9/20/2025 18:35,0.8,0.44
+int_000473,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1548_Monday_Coffee_Bar,Monday Coffee Bar,rating,4,9/20/2025 18:43,0.8,0.44
+int_000143,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_883_Dakshaini_Silks,Dakshaini Silks,visit,1,9/21/2025 19:03,6.28,0.22
+int_000142,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_316_Shipmart_Pte_Ltd,Shipmart Pte Ltd,search,1,9/21/2025 19:16,6.88,0.22
+int_000306,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_941_Chan_Foon_Jade_&_Jewellery,Chan Foon Jade & Jewellery,visit,1,9/21/2025 19:22,5.88,0.56
+int_000307,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_941_Chan_Foon_Jade_&_Jewellery,Chan Foon Jade & Jewellery,rating,4,9/21/2025 19:36,5.88,0.56
+int_000144,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_883_Dakshaini_Silks,Dakshaini Silks,rating,3,9/21/2025 19:40,6.28,0.22
+int_000510,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1509_Tanamera_Coffee,Tanamera Coffee,visit,1,9/21/2025 23:45,7.22,0.51
+int_000324,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1008_Evernew_Book_Store,Evernew Book Store,search,1,9/22/2025 0:02,3.8,0.51
+int_000511,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1509_Tanamera_Coffee,Tanamera Coffee,rating,3,9/22/2025 0:42,7.22,0.51
+int_000322,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1008_Evernew_Book_Store,Evernew Book Store,visit,1,9/22/2025 2:02,3.8,0.51
+int_000140,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_316_Shipmart_Pte_Ltd,Shipmart Pte Ltd,visit,1,9/22/2025 3:16,6.88,0.22
+int_000323,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1008_Evernew_Book_Store,Evernew Book Store,rating,5,9/22/2025 3:51,3.8,0.51
+int_000141,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_316_Shipmart_Pte_Ltd,Shipmart Pte Ltd,rating,3,9/22/2025 5:00,6.88,0.22
+int_000392,6c32074e-c671-44f7-951a-422b74159885,David,poi_4899_DBS,DBS,visit,1,9/22/2025 9:18,7.34,0.28
+int_000393,6c32074e-c671-44f7-951a-422b74159885,David,poi_4899_DBS,DBS,rating,3,9/22/2025 10:02,7.34,0.28
+int_000233,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2067_Ye_Lai_Xiang_Tasty_Barbecue,Ye Lai Xiang Tasty Barbecue,visit,1,9/23/2025 9:11,7.31,0.48
+int_000234,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2067_Ye_Lai_Xiang_Tasty_Barbecue,Ye Lai Xiang Tasty Barbecue,rating,3,9/23/2025 9:38,7.31,0.48
+int_000420,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1278_An_Aai_Affair,An Aai Affair,search,1,9/23/2025 10:39,10.38,0.51
+int_000339,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1179_Starbucks,Starbucks,search,1,9/23/2025 15:38,7.49,0.51
+int_000418,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1278_An_Aai_Affair,An Aai Affair,visit,1,9/24/2025 3:39,10.38,0.51
+int_000419,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1278_An_Aai_Affair,An Aai Affair,rating,3,9/24/2025 4:08,10.38,0.51
+int_000362,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_767_Blinker_Electrical,Blinker Electrical,visit,1,9/24/2025 4:48,4.26,0.22
+int_000152,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_964_Ishtara,Ishtara,search,1,9/24/2025 18:17,6.21,0.22
+int_000337,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1179_Starbucks,Starbucks,visit,1,9/25/2025 2:38,7.49,0.51
+int_000338,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1179_Starbucks,Starbucks,rating,3,9/25/2025 4:05,7.49,0.51
+int_000238,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1090_Ardents_Cafe_Bar,Ardents Cafe Bar,visit,1,9/25/2025 4:21,7.2,0.48
+int_000239,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1090_Ardents_Cafe_Bar,Ardents Cafe Bar,rating,3,9/25/2025 5:33,7.2,0.48
+int_000080,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_3807_Paris_Baguette,Paris Baguette,search,1,9/25/2025 9:03,8.32,0.22
+int_000103,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1014_Isetan,Isetan,visit,1,9/25/2025 18:53,5.24,0.44
+int_000104,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1014_Isetan,Isetan,rating,3,9/25/2025 19:36,5.24,0.44
+int_000150,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_964_Ishtara,Ishtara,visit,1,9/26/2025 3:17,6.21,0.22
+int_000151,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_964_Ishtara,Ishtara,rating,3,9/26/2025 4:34,6.21,0.22
+int_000078,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_3807_Paris_Baguette,Paris Baguette,visit,1,9/26/2025 23:03,8.32,0.22
+int_000342,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1565_The_Signature_Pattisserie,The Signature Pattisserie,search,1,9/26/2025 23:33,3.43,0.51
+int_000079,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_3807_Paris_Baguette,Paris Baguette,rating,3,9/26/2025 23:39,8.32,0.22
+int_000260,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4068_Dental_Surgery,Dental Surgery,search,1,9/27/2025 12:32,9.99,0.26
+int_000503,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_417_Lit_Heng_Seng_Minimart,Lit Heng Seng Minimart,search,1,9/27/2025 19:50,6.58,0.44
+int_000258,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4068_Dental_Surgery,Dental Surgery,visit,1,9/27/2025 21:32,9.99,0.26
+int_000340,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1565_The_Signature_Pattisserie,The Signature Pattisserie,visit,1,9/27/2025 21:33,3.43,0.51
+int_000341,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1565_The_Signature_Pattisserie,The Signature Pattisserie,rating,4,9/27/2025 22:03,3.43,0.51
+int_000259,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4068_Dental_Surgery,Dental Surgery,rating,3,9/27/2025 22:08,9.99,0.26
+int_000501,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_417_Lit_Heng_Seng_Minimart,Lit Heng Seng Minimart,visit,1,9/27/2025 22:50,6.58,0.44
+int_000502,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_417_Lit_Heng_Seng_Minimart,Lit Heng Seng Minimart,rating,3,9/28/2025 0:39,6.58,0.44
+int_000139,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_246_Save_Mart,Save Mart,search,1,9/28/2025 6:23,7.04,0.22
+int_000242,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4096_Q&M_Dental_Surgery,Q&M Dental Surgery,visit,1,9/28/2025 7:56,3.93,0.26
+int_000243,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4096_Q&M_Dental_Surgery,Q&M Dental Surgery,rating,3,9/28/2025 8:18,3.93,0.26
+int_000195,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1826_Dallas_Restaurant_&_Bar,Dallas Restaurant & Bar,search,1,9/28/2025 15:42,9.24,0.48
+int_000193,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1826_Dallas_Restaurant_&_Bar,Dallas Restaurant & Bar,visit,1,9/29/2025 2:42,9.24,0.48
+int_000208,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2002_Lina_Satay_Club,Lina Satay Club,visit,1,9/29/2025 3:24,3.57,0.24
+int_000194,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1826_Dallas_Restaurant_&_Bar,Dallas Restaurant & Bar,rating,3,9/29/2025 4:07,9.24,0.48
+int_000231,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1828_Harrys_Bar,Harrys Bar,visit,1,9/29/2025 4:33,7.29,0.48
+int_000232,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1828_Harrys_Bar,Harrys Bar,rating,2,9/29/2025 4:44,7.29,0.48
+int_000209,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2002_Lina_Satay_Club,Lina Satay Club,rating,2,9/29/2025 5:08,3.57,0.24
+int_000137,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_246_Save_Mart,Save Mart,visit,1,9/29/2025 6:23,7.04,0.22
+int_000138,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_246_Save_Mart,Save Mart,rating,3,9/29/2025 6:48,7.04,0.22
+int_000164,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3147_Bar.B.Q._Tonight,Bar.B.Q. Tonight,search,1,9/29/2025 10:53,6.58,0.48
+int_000400,6c32074e-c671-44f7-951a-422b74159885,David,poi_5093_UOB,UOB,visit,1,9/29/2025 19:09,10,0.28
+int_000409,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1313_Starbucks,Starbucks,visit,1,9/29/2025 22:52,11.89,0.26
+int_000410,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1313_Starbucks,Starbucks,rating,3,9/30/2025 0:13,11.89,0.26
+int_000421,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1570_Kyuukei_Coffee,Kyuukei Coffee,visit,1,9/30/2025 8:37,12.72,0.51
+int_000422,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1570_Kyuukei_Coffee,Kyuukei Coffee,rating,3,9/30/2025 9:56,12.72,0.51
+int_000146,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_1338_Toast_Box,Toast Box,visit,1,10/1/2025 2:27,8.35,0.22
+int_000162,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3147_Bar.B.Q._Tonight,Bar.B.Q. Tonight,visit,1,10/1/2025 2:53,6.58,0.48
+int_000163,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3147_Bar.B.Q._Tonight,Bar.B.Q. Tonight,rating,3,10/1/2025 3:13,6.58,0.48
+int_000147,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_1338_Toast_Box,Toast Box,rating,3,10/1/2025 3:40,8.35,0.22
+int_000329,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1317_The_Coffee_Bean_&_Tea_Leaf,The Coffee Bean & Tea Leaf,visit,1,10/1/2025 5:32,11.22,0.51
+int_000330,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1317_The_Coffee_Bean_&_Tea_Leaf,The Coffee Bean & Tea Leaf,rating,3,10/1/2025 7:09,11.22,0.51
+int_000349,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_490_Aruna_Minimart,Aruna Minimart,search,1,10/1/2025 15:53,9.76,0.44
+int_000033,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_1180_Atlas_Coffee_House,Atlas Coffee House,visit,1,10/1/2025 22:02,7.69,0.37
+int_000034,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_1180_Atlas_Coffee_House,Atlas Coffee House,rating,3,10/1/2025 23:25,7.69,0.37
+int_000403,6c32074e-c671-44f7-951a-422b74159885,David,poi_5202_UOB,UOB,search,1,10/2/2025 6:47,6.44,0.28
+int_000043,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1371_Starbucks,Starbucks,visit,1,10/2/2025 8:41,0.12,0.22
+int_000044,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1371_Starbucks,Starbucks,rating,3,10/2/2025 9:40,0.12,0.22
+int_000192,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3368_Polo_Club_Restaurant_&_Bar,Polo Club Restaurant & Bar,search,1,10/2/2025 14:55,4.22,0.71
+int_000190,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3368_Polo_Club_Restaurant_&_Bar,Polo Club Restaurant & Bar,visit,1,10/2/2025 20:55,4.22,0.71
+int_000191,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3368_Polo_Club_Restaurant_&_Bar,Polo Club Restaurant & Bar,rating,5,10/2/2025 22:53,4.22,0.71
+int_000491,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1053_Cafe_O,Cafe O,search,1,10/2/2025 23:41,10.14,0.22
+int_000077,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_3774_Fredos,Fredos,visit,1,10/3/2025 0:24,14.01,0.22
+int_000072,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1315_Starbucks,Starbucks,visit,1,10/3/2025 0:55,14.23,0.22
+int_000073,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1315_Starbucks,Starbucks,rating,1,10/3/2025 1:01,14.23,0.22
+int_000401,6c32074e-c671-44f7-951a-422b74159885,David,poi_5202_UOB,UOB,visit,1,10/3/2025 4:47,6.44,0.28
+int_000402,6c32074e-c671-44f7-951a-422b74159885,David,poi_5202_UOB,UOB,rating,3,10/3/2025 5:27,6.44,0.28
+int_000490,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1053_Cafe_O,Cafe O,visit,1,10/3/2025 6:41,10.14,0.22
+int_000347,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_490_Aruna_Minimart,Aruna Minimart,visit,1,10/3/2025 6:53,9.76,0.44
+int_000348,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_490_Aruna_Minimart,Aruna Minimart,rating,3,10/3/2025 8:29,9.76,0.44
+int_000476,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1189_Station_51,Station 51,search,1,10/3/2025 23:09,9.79,0.22
+int_000036,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_3422_McDonalds,McDonalds,visit,1,10/4/2025 3:50,5.26,0.37
+int_000037,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_3422_McDonalds,McDonalds,rating,4,10/4/2025 4:43,5.26,0.37
+int_000013,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_3649_Best_Satay_7_&_8_(Lau_Pa_Sat),Best Satay 7 & 8 (Lau Pa Sat),visit,1,10/4/2025 7:41,13.2,0.37
+int_000014,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_3649_Best_Satay_7_&_8_(Lau_Pa_Sat),Best Satay 7 & 8 (Lau Pa Sat),rating,3,10/4/2025 9:37,13.2,0.37
+int_000161,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3559_Boost_Juice_Bar,Boost Juice Bar,search,1,10/4/2025 12:01,7.37,0.48
+int_000475,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1189_Station_51,Station 51,visit,1,10/4/2025 19:09,9.79,0.22
+int_000114,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1338_Toast_Box,Toast Box,visit,1,10/5/2025 5:03,4.2,0.22
+int_000212,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1931_Verve_Pizza_Bar__Marina_Bay,Verve Pizza Bar  Marina Bay,visit,1,10/5/2025 5:15,8.26,0.48
+int_000297,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_802_La_Belle_Couture,La Belle Couture,visit,1,10/5/2025 6:06,6.45,0.56
+int_000298,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_802_La_Belle_Couture,La Belle Couture,rating,2,10/5/2025 6:42,6.45,0.56
+int_000159,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3559_Boost_Juice_Bar,Boost Juice Bar,visit,1,10/5/2025 8:01,7.37,0.48
+int_000160,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_3559_Boost_Juice_Bar,Boost Juice Bar,rating,2,10/5/2025 8:55,7.37,0.48
+int_000354,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1336_Toast_Box,Toast Box,search,1,10/5/2025 11:20,3.1,0.22
+int_000352,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1336_Toast_Box,Toast Box,visit,1,10/6/2025 7:20,3.1,0.22
+int_000353,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1336_Toast_Box,Toast Box,rating,3,10/6/2025 8:54,3.1,0.22
+int_000333,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1256_Frienzlink_Cafeteria,Frienzlink Cafeteria,visit,1,10/6/2025 19:09,12.68,0.51
+int_000334,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1256_Frienzlink_Cafeteria,Frienzlink Cafeteria,rating,3,10/6/2025 19:43,12.68,0.51
+int_000041,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_3819_Simply_Bread,Simply Bread,visit,1,10/7/2025 2:25,12.22,0.22
+int_000042,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_3819_Simply_Bread,Simply Bread,rating,2,10/7/2025 3:21,12.22,0.22
+int_000217,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_3315_The_Sun_to_House_Japanese_Whisky_&_Sake_Bar,The Sun to House Japanese Whisky & Sake Bar,visit,1,10/7/2025 23:50,6.06,0.48
+int_000058,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_3794_Bangalore_Iyengar,Bangalore Iyengar,visit,1,10/8/2025 22:32,13.12,0.22
+int_000517,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1552_The_Good_Boys,The Good Boys,search,1,10/8/2025 22:33,2.96,0.51
+int_000059,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_3794_Bangalore_Iyengar,Bangalore Iyengar,rating,1,10/9/2025 0:10,13.12,0.22
+int_000101,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_755_Sony,Sony,visit,1,10/9/2025 6:20,5.22,0.22
+int_000000,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_1410_Coffee_Friends,Coffee Friends,visit,1,10/9/2025 6:53,3.19,0.37
+int_000102,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_755_Sony,Sony,rating,3,10/9/2025 8:11,5.22,0.22
+int_000001,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_1410_Coffee_Friends,Coffee Friends,rating,3,10/9/2025 8:43,3.19,0.37
+int_000057,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1487_Joan_Bowen_Cafe,Joan Bowen Cafe,search,1,10/9/2025 15:26,11.95,0.22
+int_000360,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1381_Arabica,Arabica,visit,1,10/9/2025 22:21,10.18,0.22
+int_000361,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1381_Arabica,Arabica,rating,2,10/9/2025 23:05,10.18,0.22
+int_000056,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1487_Joan_Bowen_Cafe,Joan Bowen Cafe,visit,1,10/9/2025 23:26,11.95,0.22
+int_000515,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1552_The_Good_Boys,The Good Boys,visit,1,10/9/2025 23:33,2.96,0.51
+int_000516,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1552_The_Good_Boys,The Good Boys,rating,4,10/10/2025 1:23,2.96,0.51
+int_000067,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_3273_Dlife_Signature,Dlife Signature,visit,1,10/10/2025 20:33,12.24,0.22
+int_000131,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_248_Free_&_Easy_Minimart,Free & Easy Minimart,search,1,10/10/2025 21:49,4.61,0.22
+int_000068,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_3273_Dlife_Signature,Dlife Signature,rating,2,10/10/2025 21:53,12.24,0.22
+int_000426,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1565_The_Signature_Pattisserie,The Signature Pattisserie,visit,1,10/11/2025 4:23,3.43,0.51
+int_000427,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1565_The_Signature_Pattisserie,The Signature Pattisserie,rating,4,10/11/2025 5:08,3.43,0.51
+int_000130,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_248_Free_&_Easy_Minimart,Free & Easy Minimart,visit,1,10/11/2025 7:49,4.61,0.22
+int_000220,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2973_Lumo_Bar_&_Restaurant,Lumo Bar & Restaurant,search,1,10/11/2025 8:24,7.03,0.48
+int_000313,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1523_Brawn_&_Brains_Coffee,Brawn & Brains Coffee,search,1,10/11/2025 22:45,13.27,0.51
+int_000506,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_979_Malabar,Malabar,visit,1,10/12/2025 2:07,9.46,0.22
+int_000507,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_979_Malabar,Malabar,rating,2,10/12/2025 2:15,9.46,0.22
+int_000218,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2973_Lumo_Bar_&_Restaurant,Lumo Bar & Restaurant,visit,1,10/12/2025 5:24,7.03,0.48
+int_000219,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2973_Lumo_Bar_&_Restaurant,Lumo Bar & Restaurant,rating,3,10/12/2025 6:17,7.03,0.48
+int_000246,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_3965_Joy_Family_Clinic,Joy Family Clinic,visit,1,10/12/2025 8:55,1.71,0.26
+int_000017,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1490_iTea,iTea,visit,1,10/12/2025 9:10,1.49,0.44
+int_000018,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1490_iTea,iTea,rating,5,10/12/2025 10:47,1.49,0.44
+int_000466,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_3732_Fried_Chicken_Master_,Fried Chicken Master ,visit,1,10/12/2025 18:35,0.24,0.37
+int_000467,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_3732_Fried_Chicken_Master_,Fried Chicken Master ,rating,4,10/12/2025 20:15,0.24,0.37
+int_000498,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_964_Ishtara,Ishtara,visit,1,10/13/2025 0:23,9.87,0.22
+int_000311,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1523_Brawn_&_Brains_Coffee,Brawn & Brains Coffee,visit,1,10/13/2025 18:45,13.27,0.51
+int_000312,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1523_Brawn_&_Brains_Coffee,Brawn & Brains Coffee,rating,3,10/13/2025 20:07,13.27,0.51
+int_000399,6c32074e-c671-44f7-951a-422b74159885,David,poi_5095_UOB,UOB,search,1,10/14/2025 2:22,9.88,0.28
+int_000397,6c32074e-c671-44f7-951a-422b74159885,David,poi_5095_UOB,UOB,visit,1,10/14/2025 7:22,9.88,0.28
+int_000398,6c32074e-c671-44f7-951a-422b74159885,David,poi_5095_UOB,UOB,rating,3,10/14/2025 9:22,9.88,0.28
+int_000287,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3441_Burger_King,Burger King,search,1,10/15/2025 15:59,6.05,0.28
+int_000285,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3441_Burger_King,Burger King,visit,1,10/16/2025 3:59,6.05,0.28
+int_000286,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3441_Burger_King,Burger King,rating,3,10/16/2025 4:29,6.05,0.28
+int_000447,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_3538_Dominos,Dominos,search,1,10/16/2025 18:24,0.35,0.37
+int_000119,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_246_Save_Mart,Save Mart,search,1,10/16/2025 19:19,7.95,0.22
+int_000483,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1060_The_Audacious_Cakery,The Audacious Cakery,visit,1,10/17/2025 5:32,9.3,0.22
+int_000484,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1060_The_Audacious_Cakery,The Audacious Cakery,rating,2,10/17/2025 6:25,9.3,0.22
+int_000065,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1402_CHICHA_San_Chen,CHICHA San Chen,visit,1,10/17/2025 19:40,6.94,0.22
+int_000325,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1240_Plus_Coffee_Joint,Plus Coffee Joint,visit,1,10/17/2025 21:07,12.59,0.51
+int_000066,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1402_CHICHA_San_Chen,CHICHA San Chen,rating,3,10/17/2025 21:23,6.94,0.22
+int_000326,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1240_Plus_Coffee_Joint,Plus Coffee Joint,rating,3,10/17/2025 21:34,12.59,0.51
+int_000445,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_3538_Dominos,Dominos,visit,1,10/18/2025 1:24,0.35,0.37
+int_000446,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_3538_Dominos,Dominos,rating,4,10/18/2025 1:57,0.35,0.37
+int_000117,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_246_Save_Mart,Save Mart,visit,1,10/18/2025 6:19,7.95,0.22
+int_000118,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_246_Save_Mart,Save Mart,rating,3,10/18/2025 7:32,7.95,0.22
+int_000463,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_911_G2000,G2000,search,1,10/18/2025 15:59,14.06,0.56
+int_000499,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_4758_Standard_Chartered,Standard Chartered,visit,1,10/19/2025 2:20,3.88,0.22
+int_000462,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_911_G2000,G2000,visit,1,10/19/2025 2:59,14.06,0.56
+int_000500,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_4758_Standard_Chartered,Standard Chartered,rating,3,10/19/2025 4:08,3.88,0.22
+int_000011,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_909_Tommy_Hilfiger,Tommy Hilfiger,search,1,10/19/2025 11:10,0.19,0.56
+int_000009,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_909_Tommy_Hilfiger,Tommy Hilfiger,visit,1,10/19/2025 21:10,0.19,0.56
+int_000010,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_909_Tommy_Hilfiger,Tommy Hilfiger,rating,4,10/19/2025 21:27,0.19,0.56
+int_000266,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4205_Anytime_Fitness,Anytime Fitness,search,1,10/20/2025 0:16,7.55,1
+int_000178,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1388_Frienzie_Bar_&_Bistro,Frienzie Bar & Bistro,search,1,10/20/2025 3:53,8.4,0.48
+int_000153,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_2736_The_Skewer_Bar,The Skewer Bar,visit,1,10/20/2025 6:08,7.44,0.48
+int_000264,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4205_Anytime_Fitness,Anytime Fitness,visit,1,10/20/2025 6:16,7.55,1
+int_000154,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_2736_The_Skewer_Bar,The Skewer Bar,rating,2,10/20/2025 6:19,7.44,0.48
+int_000265,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4205_Anytime_Fitness,Anytime Fitness,rating,4,10/20/2025 6:56,7.55,1
+int_000263,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4074_NEUGen_Dental,NEUGen Dental,search,1,10/21/2025 1:49,1.78,0.26
+int_000277,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3421_McDonalds,McDonalds,visit,1,10/21/2025 1:57,5.4,0.28
+int_000278,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3421_McDonalds,McDonalds,rating,3,10/21/2025 2:11,5.4,0.28
+int_000261,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4074_NEUGen_Dental,NEUGen Dental,visit,1,10/21/2025 4:49,1.78,0.26
+int_000176,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1388_Frienzie_Bar_&_Bistro,Frienzie Bar & Bistro,visit,1,10/21/2025 5:53,8.4,0.48
+int_000299,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1631_Sakunthalas,Sakunthalas,visit,1,10/21/2025 6:00,2.78,0.37
+int_000262,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4074_NEUGen_Dental,NEUGen Dental,rating,3,10/21/2025 6:08,1.78,0.26
+int_000177,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1388_Frienzie_Bar_&_Bistro,Frienzie Bar & Bistro,rating,2,10/21/2025 6:33,8.4,0.48
+int_000432,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1003_Book_Treasure,Book Treasure,search,1,10/21/2025 6:50,12.29,0.51
+int_000188,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1262_The_Dempsey_Cookhouse_and_Bar,The Dempsey Cookhouse and Bar,visit,1,10/22/2025 0:31,8.06,0.48
+int_000430,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1003_Book_Treasure,Book Treasure,visit,1,10/22/2025 0:50,12.29,0.51
+int_000431,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1003_Book_Treasure,Book Treasure,rating,3,10/22/2025 0:56,12.29,0.51
+int_000189,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1262_The_Dempsey_Cookhouse_and_Bar,The Dempsey Cookhouse and Bar,rating,3,10/22/2025 2:02,8.06,0.48
+int_000320,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1203_Qtech,Qtech,visit,1,10/22/2025 6:58,12.98,0.77
+int_000321,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1203_Qtech,Qtech,rating,4,10/22/2025 7:10,12.98,0.77
+int_000496,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_421_Chee_Hoe_Seng_Minimart,Chee Hoe Seng Minimart,visit,1,10/23/2025 20:59,6.51,0.44
+int_000497,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_421_Chee_Hoe_Seng_Minimart,Chee Hoe Seng Minimart,rating,3,10/23/2025 21:32,6.51,0.44
+int_000049,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1414_Alchemy,Alchemy,search,1,10/24/2025 15:44,14.4,0.22
+int_000183,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1449_Maxi_Coffee_Bar,Maxi Coffee Bar,visit,1,10/25/2025 1:30,9.75,0.48
+int_000518,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1453_BingDorDor,BingDorDor,visit,1,10/25/2025 2:55,2.13,0.51
+int_000184,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1449_Maxi_Coffee_Bar,Maxi Coffee Bar,rating,3,10/25/2025 3:02,9.75,0.48
+int_000433,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1493_Routine_Cafe_&_Bar,Routine Cafe & Bar,visit,1,10/25/2025 4:11,12.64,0.51
+int_000519,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1453_BingDorDor,BingDorDor,rating,4,10/25/2025 4:50,2.13,0.51
+int_000434,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1493_Routine_Cafe_&_Bar,Routine Cafe & Bar,rating,3,10/25/2025 5:03,12.64,0.51
+int_000023,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1402_CHICHA_San_Chen,CHICHA San Chen,search,1,10/25/2025 5:25,6.94,0.22
+int_000468,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_787_iStudio,iStudio,visit,1,10/25/2025 8:57,14.13,0.56
+int_000469,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_787_iStudio,iStudio,rating,3,10/25/2025 9:15,14.13,0.56
+int_000091,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_3880_Yamazaki,Yamazaki,visit,1,10/25/2025 19:11,12.2,0.22
+int_000267,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3625_KFC,KFC,visit,1,10/25/2025 21:26,7.49,0.28
+int_000268,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3625_KFC,KFC,rating,3,10/25/2025 23:16,7.49,0.28
+int_000021,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1402_CHICHA_San_Chen,CHICHA San Chen,visit,1,10/26/2025 2:25,6.94,0.22
+int_000022,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1402_CHICHA_San_Chen,CHICHA San Chen,rating,3,10/26/2025 4:08,6.94,0.22
+int_000048,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1414_Alchemy,Alchemy,visit,1,10/26/2025 5:44,14.4,0.22
+int_000173,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_2661_Ippoh_Tempura_Bar,Ippoh Tempura Bar,search,1,10/26/2025 7:38,8.06,0.48
+int_000008,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_1418_Gong_Cha,Gong Cha,search,1,10/26/2025 7:51,4.51,0.37
+int_000006,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_1418_Gong_Cha,Gong Cha,visit,1,10/26/2025 22:51,4.51,0.37
+int_000007,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_1418_Gong_Cha,Gong Cha,rating,3,10/27/2025 0:44,4.51,0.37
+int_000458,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_3440_Dominos,Dominos,visit,1,10/27/2025 19:31,10.61,0.37
+int_000459,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_3440_Dominos,Dominos,rating,3,10/27/2025 20:52,10.61,0.37
+int_000004,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_431_Phoon_Huat,Phoon Huat,visit,1,10/27/2025 23:11,2.97,0.19
+int_000005,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_431_Phoon_Huat,Phoon Huat,rating,3,10/27/2025 23:21,2.97,0.19
+int_000171,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_2661_Ippoh_Tempura_Bar,Ippoh Tempura Bar,visit,1,10/28/2025 4:38,8.06,0.48
+int_000172,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_2661_Ippoh_Tempura_Bar,Ippoh Tempura Bar,rating,3,10/28/2025 4:43,8.06,0.48
+int_000092,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_544_Choices,Choices,visit,1,10/28/2025 5:13,3.23,0.22
+int_000093,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_544_Choices,Choices,rating,3,10/28/2025 7:11,3.23,0.22
+int_000136,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_1382_One_Man_Coffee,One Man Coffee,search,1,10/28/2025 7:41,4.57,0.44
+int_000207,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1548_Monday_Coffee_Bar,Monday Coffee Bar,search,1,10/28/2025 23:12,4.19,0.48
+int_000134,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_1382_One_Man_Coffee,One Man Coffee,visit,1,10/29/2025 2:41,4.57,0.44
+int_000135,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_1382_One_Man_Coffee,One Man Coffee,rating,3,10/29/2025 2:47,4.57,0.44
+int_000205,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1548_Monday_Coffee_Bar,Monday Coffee Bar,visit,1,10/29/2025 5:12,4.19,0.48
+int_000206,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1548_Monday_Coffee_Bar,Monday Coffee Bar,rating,4,10/29/2025 6:46,4.19,0.48
+int_000090,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_921_Crocodile,Crocodile,search,1,10/29/2025 20:23,12.89,0.22
+int_000157,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1090_Ardents_Cafe_Bar,Ardents Cafe Bar,visit,1,10/29/2025 23:59,9.95,0.48
+int_000492,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_1164_Unicorn_Kampung_1200,Unicorn Kampung 1200,visit,1,10/30/2025 0:13,8.04,0.22
+int_000158,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1090_Ardents_Cafe_Bar,Ardents Cafe Bar,rating,3,10/30/2025 1:13,9.95,0.48
+int_000493,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_1164_Unicorn_Kampung_1200,Unicorn Kampung 1200,rating,4,10/30/2025 1:36,8.04,0.22
+int_000088,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_921_Crocodile,Crocodile,visit,1,10/30/2025 6:23,12.89,0.22
+int_000089,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_921_Crocodile,Crocodile,rating,2,10/30/2025 7:36,12.89,0.22
+int_000453,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_952_Cartier,Cartier,search,1,10/31/2025 3:00,14.2,0.56
+int_000451,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_952_Cartier,Cartier,visit,1,10/31/2025 4:00,14.2,0.56
+int_000452,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_952_Cartier,Cartier,rating,3,10/31/2025 4:45,14.2,0.56
+int_000276,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3560_Carls_Jr.,Carls Jr.,search,1,10/31/2025 7:15,3.96,0.28
+int_000274,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3560_Carls_Jr.,Carls Jr.,visit,1,11/1/2025 3:15,3.96,0.28
+int_000275,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3560_Carls_Jr.,Carls Jr.,rating,3,11/1/2025 3:53,3.96,0.28
+int_000204,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_2000_Mariners_Corner_Restaurant,Mariners Corner Restaurant,search,1,11/1/2025 5:34,0.91,0.56
+int_000520,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1289_Luckin_Coffee,Luckin Coffee,visit,1,11/1/2025 5:43,3.97,0.51
+int_000521,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1289_Luckin_Coffee,Luckin Coffee,rating,4,11/1/2025 6:28,3.97,0.51
+int_000203,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_2000_Mariners_Corner_Restaurant,Mariners Corner Restaurant,visit,1,11/1/2025 8:34,0.91,0.56
+int_000070,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1111_Habitat_Coffee,Habitat Coffee,visit,1,11/2/2025 2:13,8.63,0.44
+int_000071,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1111_Habitat_Coffee,Habitat Coffee,rating,3,11/2/2025 3:13,8.63,0.44
+int_000240,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_3903_Frankel_Clinic,Frankel Clinic,visit,1,11/2/2025 23:20,1.42,0.26
+int_000241,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_3903_Frankel_Clinic,Frankel Clinic,rating,3,11/3/2025 0:57,1.42,0.26
+int_000449,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_354_7-Eleven,7-Eleven,visit,1,11/3/2025 8:45,6.6,0.19
+int_000450,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_354_7-Eleven,7-Eleven,rating,3,11/3/2025 9:04,6.6,0.19
+int_000110,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_233_Jmart,Jmart,search,1,11/3/2025 15:54,2,0.22
+int_000384,6c32074e-c671-44f7-951a-422b74159885,David,poi_5083_UOB,UOB,visit,1,11/3/2025 21:01,0.31,0.28
+int_000385,6c32074e-c671-44f7-951a-422b74159885,David,poi_5083_UOB,UOB,rating,4,11/3/2025 21:08,0.31,0.28
+int_000026,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1586_State_Of_Mind,State Of Mind,visit,1,11/4/2025 1:13,0.59,0.22
+int_000027,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1586_State_Of_Mind,State Of Mind,rating,3,11/4/2025 2:31,0.59,0.22
+int_000391,6c32074e-c671-44f7-951a-422b74159885,David,poi_987_Popular,Popular,search,1,11/4/2025 3:32,1.53,0.28
+int_000328,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1375_Batter_batter,Batter batter,visit,1,11/4/2025 6:29,12.39,0.51
+int_000128,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_4793_Standard_Chartered,Standard Chartered,visit,1,11/4/2025 20:12,0.57,0.22
+int_000129,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_4793_Standard_Chartered,Standard Chartered,rating,3,11/4/2025 21:58,0.57,0.22
+int_000108,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_233_Jmart,Jmart,visit,1,11/5/2025 3:54,2,0.22
+int_000109,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_233_Jmart,Jmart,rating,4,11/5/2025 4:19,2,0.22
+int_000050,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1205_280_Cafe,280 Cafe,visit,1,11/5/2025 5:25,5.33,0.22
+int_000051,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1205_280_Cafe,280 Cafe,rating,4,11/5/2025 6:23,5.33,0.22
+int_000389,6c32074e-c671-44f7-951a-422b74159885,David,poi_987_Popular,Popular,visit,1,11/5/2025 8:32,1.53,0.28
+int_000390,6c32074e-c671-44f7-951a-422b74159885,David,poi_987_Popular,Popular,rating,4,11/5/2025 9:47,1.53,0.28
+int_000095,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_385_7-Eleven,7-Eleven,search,1,11/5/2025 20:47,7.57,0.22
+int_000012,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_831_Jinders,Jinders,visit,1,11/5/2025 23:34,12.27,0.56
+int_000016,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_954_MB_Jewellery,MB Jewellery,search,1,11/6/2025 5:07,9.93,0.56
+int_000094,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_385_7-Eleven,7-Eleven,visit,1,11/7/2025 0:47,7.57,0.22
+int_000302,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_938_1st_Jewellery,1st Jewellery,visit,1,11/7/2025 2:16,3.43,0.56
+int_000031,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_3584_MOS_Burger,MOS Burger,visit,1,11/7/2025 5:19,6.28,0.37
+int_000032,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_3584_MOS_Burger,MOS Burger,rating,3,11/7/2025 6:37,6.28,0.37
+int_000253,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_3911_Geylang_Serai_Clinic,Geylang Serai Clinic,visit,1,11/7/2025 7:05,2.95,0.26
+int_000254,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_3911_Geylang_Serai_Clinic,Geylang Serai Clinic,rating,3,11/7/2025 8:52,2.95,0.26
+int_000015,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_954_MB_Jewellery,MB Jewellery,visit,1,11/7/2025 22:07,9.93,0.56
+int_000167,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1688_Restaurant_Barakath_(_),Restaurant Barakath ( ),visit,1,11/7/2025 23:09,7.17,0.48
+int_000168,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1688_Restaurant_Barakath_(_),Restaurant Barakath ( ),rating,2,11/7/2025 23:50,7.17,0.48
+int_000350,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_466_7-Eleven,7-Eleven,visit,1,11/8/2025 0:19,4.29,0.22
+int_000351,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_466_7-Eleven,7-Eleven,rating,3,11/8/2025 2:17,4.29,0.22
+int_000371,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3531_Dominos,Dominos,search,1,11/8/2025 9:52,14.65,0.28
+int_000413,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_776_Dyson_Demo_Store_-_Beauty_Lab_Funan,Dyson Demo Store - Beauty Lab Funan,visit,1,11/8/2025 19:09,12.68,0.51
+int_000414,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_776_Dyson_Demo_Store_-_Beauty_Lab_Funan,Dyson Demo Store - Beauty Lab Funan,rating,2,11/8/2025 20:01,12.68,0.51
+int_000196,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_1694_Les_Bouchons,Les Bouchons,visit,1,11/9/2025 1:01,9.74,0.56
+int_000346,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1188_Cafe_Etc.,Cafe Etc.,search,1,11/9/2025 14:38,7.35,0.22
+int_000482,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_3626_Park_Bench_Deli,Park Bench Deli,search,1,11/9/2025 22:32,9.85,0.44
+int_000526,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1181_Partea,Partea,search,1,11/9/2025 23:50,3.08,0.51
+int_000249,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4088_The_Dental_Practice,The Dental Practice,search,1,11/10/2025 4:52,1.67,0.26
+int_000369,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3531_Dominos,Dominos,visit,1,11/10/2025 5:52,14.65,0.28
+int_000370,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3531_Dominos,Dominos,rating,4,11/10/2025 7:03,14.65,0.28
+int_000024,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1511_TA_Community,TA Community,visit,1,11/10/2025 18:53,13.06,0.22
+int_000025,6fea97cb-757c-47f2-9e34-3ccbb6714c80,Chloe,poi_1511_TA_Community,TA Community,rating,2,11/10/2025 19:04,13.06,0.22
+int_000335,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_786_Harvey_Norman,Harvey Norman,visit,1,11/10/2025 23:50,0.17,0.51
+int_000525,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1181_Partea,Partea,visit,1,11/11/2025 0:50,3.08,0.51
+int_000336,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_786_Harvey_Norman,Harvey Norman,rating,4,11/11/2025 0:59,0.17,0.51
+int_000169,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1493_Routine_Cafe_&_Bar,Routine Cafe & Bar,visit,1,11/11/2025 5:24,10.14,0.48
+int_000170,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1493_Routine_Cafe_&_Bar,Routine Cafe & Bar,rating,3,11/11/2025 6:00,10.14,0.48
+int_000344,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1188_Cafe_Etc.,Cafe Etc.,visit,1,11/11/2025 8:38,7.35,0.22
+int_000345,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1188_Cafe_Etc.,Cafe Etc.,rating,3,11/11/2025 10:19,7.35,0.22
+int_000247,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4088_The_Dental_Practice,The Dental Practice,visit,1,11/11/2025 18:52,1.67,0.26
+int_000248,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4088_The_Dental_Practice,The Dental Practice,rating,2,11/11/2025 20:03,1.67,0.26
+int_000121,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_3775_Balmoral_Bakery,Balmoral Bakery,visit,1,11/11/2025 21:53,3.49,0.22
+int_000122,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_3775_Balmoral_Bakery,Balmoral Bakery,rating,3,11/11/2025 22:22,3.49,0.22
+int_000480,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_3626_Park_Bench_Deli,Park Bench Deli,visit,1,11/11/2025 22:32,9.85,0.44
+int_000283,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3747_Hue_Banh_Mi,Hue Banh Mi,visit,1,11/11/2025 23:21,4.83,0.28
+int_000284,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3747_Hue_Banh_Mi,Hue Banh Mi,rating,3,11/11/2025 23:50,4.83,0.28
+int_000481,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_3626_Park_Bench_Deli,Park Bench Deli,rating,3,11/11/2025 23:59,9.85,0.44
+int_000148,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_1230_Jewel_Coffee,Jewel Coffee,visit,1,11/12/2025 3:42,4.29,0.44
+int_000149,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_1230_Jewel_Coffee,Jewel Coffee,rating,4,11/12/2025 4:21,4.29,0.44
+int_000296,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1261_Nanyang_Old_Coffee,Nanyang Old Coffee,search,1,11/12/2025 14:17,6.11,0.37
+int_000470,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1349_Drink_Stall,Drink Stall,visit,1,11/12/2025 22:01,2.29,0.22
+int_000294,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1261_Nanyang_Old_Coffee,Nanyang Old Coffee,visit,1,11/12/2025 22:17,6.11,0.37
+int_000471,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1349_Drink_Stall,Drink Stall,rating,3,11/12/2025 22:23,2.29,0.22
+int_000295,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1261_Nanyang_Old_Coffee,Nanyang Old Coffee,rating,3,11/12/2025 22:39,6.11,0.37
+int_000376,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3477_Texas_Chicken,Texas Chicken,visit,1,11/13/2025 0:55,9.59,0.28
+int_000377,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3477_Texas_Chicken,Texas Chicken,rating,3,11/13/2025 1:18,9.59,0.28
+int_000113,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_370_7-Eleven,7-Eleven,search,1,11/13/2025 6:37,4.4,0.22
+int_000213,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2833_Home_Bar.Kitchen,Home Bar.Kitchen,visit,1,11/13/2025 7:36,6.5,0.48
+int_000271,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3726_Top_1_Homemade_Noodle,Top 1 Homemade Noodle,search,1,11/13/2025 8:07,3.82,0.28
+int_000214,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_2833_Home_Bar.Kitchen,Home Bar.Kitchen,rating,3,11/13/2025 8:29,6.5,0.48
+int_000457,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_979_Malabar,Malabar,search,1,11/13/2025 9:08,13.58,0.56
+int_000155,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_979_Malabar,Malabar,visit,1,11/13/2025 20:08,6.67,0.48
+int_000494,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_932_Chong_AIK,Chong AIK,visit,1,11/13/2025 20:50,9.52,0.22
+int_000210,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_3058_Ramen_Bari-Uma,Ramen Bari-Uma,visit,1,11/13/2025 21:19,4.69,0.48
+int_000156,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_979_Malabar,Malabar,rating,3,11/13/2025 21:26,6.67,0.48
+int_000495,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_932_Chong_AIK,Chong AIK,rating,2,11/13/2025 21:52,9.52,0.22
+int_000211,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_3058_Ramen_Bari-Uma,Ramen Bari-Uma,rating,2,11/13/2025 22:33,4.69,0.48
+int_000084,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1459_Old_Tea_Hut,Old Tea Hut,visit,1,11/13/2025 22:41,7.79,0.44
+int_000085,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1459_Old_Tea_Hut,Old Tea Hut,rating,3,11/13/2025 23:17,7.79,0.44
+int_000199,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_786_Harvey_Norman,Harvey Norman,visit,1,11/14/2025 3:26,3.24,0.56
+int_000111,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_370_7-Eleven,7-Eleven,visit,1,11/14/2025 4:37,4.4,0.22
+int_000200,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_786_Harvey_Norman,Harvey Norman,rating,4,11/14/2025 5:09,3.24,0.56
+int_000112,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_370_7-Eleven,7-Eleven,rating,3,11/14/2025 5:46,4.4,0.22
+int_000292,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1402_CHICHA_San_Chen,CHICHA San Chen,visit,1,11/14/2025 5:48,4,0.37
+int_000293,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_1402_CHICHA_San_Chen,CHICHA San Chen,rating,3,11/14/2025 7:23,4,0.37
+int_000280,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3541_PizzaArc,PizzaArc,search,1,11/14/2025 7:35,2.44,0.28
+int_000244,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4233_IQ_Fightclub,IQ Fightclub,visit,1,11/14/2025 18:30,7.65,0.77
+int_000269,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3726_Top_1_Homemade_Noodle,Top 1 Homemade Noodle,visit,1,11/14/2025 19:07,3.82,0.28
+int_000270,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3726_Top_1_Homemade_Noodle,Top 1 Homemade Noodle,rating,3,11/14/2025 19:21,3.82,0.28
+int_000245,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4233_IQ_Fightclub,IQ Fightclub,rating,4,11/14/2025 20:12,7.65,0.77
+int_000257,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4193_Trident_Tactical,Trident Tactical,visit,1,11/14/2025 20:45,7.8,0.77
+int_000382,6c32074e-c671-44f7-951a-422b74159885,David,poi_5100_UOB,UOB,visit,1,11/14/2025 22:05,9.49,0.28
+int_000383,6c32074e-c671-44f7-951a-422b74159885,David,poi_5100_UOB,UOB,rating,2,11/14/2025 22:23,9.49,0.28
+int_000456,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_979_Malabar,Malabar,visit,1,11/15/2025 1:08,13.58,0.56
+int_000125,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_377_7-Eleven,7-Eleven,search,1,11/15/2025 5:21,9.09,0.22
+int_000318,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1578_Borderless_Coffee,Borderless Coffee,visit,1,11/15/2025 5:38,12.7,0.51
+int_000279,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3541_PizzaArc,PizzaArc,visit,1,11/15/2025 6:35,2.44,0.28
+int_000319,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1578_Borderless_Coffee,Borderless Coffee,rating,3,11/15/2025 6:36,12.7,0.51
+int_000477,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_1561_Xo_Cafe,Xo Cafe,visit,1,11/15/2025 6:54,4.58,0.22
+int_000465,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_1317_The_Coffee_Bean_&_Tea_Leaf,The Coffee Bean & Tea Leaf,search,1,11/15/2025 7:42,12.28,0.37
+int_000225,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1262_The_Dempsey_Cookhouse_and_Bar,The Dempsey Cookhouse and Bar,search,1,11/15/2025 7:42,2.85,0.48
+int_000063,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1382_One_Man_Coffee,One Man Coffee,visit,1,11/15/2025 8:05,8.66,0.44
+int_000064,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1382_One_Man_Coffee,One Man Coffee,rating,4,11/15/2025 10:03,8.66,0.44
+int_000223,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1262_The_Dempsey_Cookhouse_and_Bar,The Dempsey Cookhouse and Bar,visit,1,11/15/2025 22:42,2.85,0.48
+int_000508,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_973_Chennai,Chennai,visit,1,11/15/2025 23:10,5.74,0.26
+int_000123,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_377_7-Eleven,7-Eleven,visit,1,11/15/2025 23:21,9.09,0.22
+int_000124,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_377_7-Eleven,7-Eleven,rating,3,11/15/2025 23:38,9.09,0.22
+int_000224,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1262_The_Dempsey_Cookhouse_and_Bar,The Dempsey Cookhouse and Bar,rating,4,11/16/2025 0:36,2.85,0.48
+int_000509,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_973_Chennai,Chennai,rating,2,11/16/2025 1:03,5.74,0.26
+int_000316,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1541_Kopi_Place,Kopi Place,visit,1,11/16/2025 2:09,13.21,0.51
+int_000317,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1541_Kopi_Place,Kopi Place,rating,4,11/16/2025 4:05,13.21,0.51
+int_000386,6c32074e-c671-44f7-951a-422b74159885,David,poi_5129_UOB,UOB,visit,1,11/16/2025 8:01,7.33,0.28
+int_000387,6c32074e-c671-44f7-951a-422b74159885,David,poi_5129_UOB,UOB,rating,3,11/16/2025 9:56,7.33,0.28
+int_000356,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_961_Goldheart_Jewelry,Goldheart Jewelry,visit,1,11/16/2025 19:32,6.53,0.44
+int_000357,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_961_Goldheart_Jewelry,Goldheart Jewelry,rating,3,11/16/2025 20:21,6.53,0.44
+int_000460,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_430_Phoon_Huat,Phoon Huat,visit,1,11/16/2025 20:40,7.17,0.19
+int_000461,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_430_Phoon_Huat,Phoon Huat,rating,3,11/16/2025 21:59,7.17,0.19
+int_000310,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1148_Rocky_Masters,Rocky Masters,visit,1,11/16/2025 23:40,6.48,0.51
+int_000411,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_773_Courts,Courts,visit,1,11/17/2025 3:18,5.84,0.51
+int_000412,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_773_Courts,Courts,rating,3,11/17/2025 4:48,5.84,0.51
+int_000464,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_1317_The_Coffee_Bean_&_Tea_Leaf,The Coffee Bean & Tea Leaf,visit,1,11/17/2025 7:42,12.28,0.37
+int_000327,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1501_Venture_Drive_Coffee,Venture Drive Coffee,visit,1,11/17/2025 22:12,6.78,0.51
+int_000442,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_480_FairPrice_Xpress,FairPrice Xpress,visit,1,11/18/2025 4:51,5.68,0.19
+int_000504,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_362_Shell_Select,Shell Select,visit,1,11/18/2025 19:15,9.13,0.22
+int_000002,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_1295_Starbucks,Starbucks,visit,1,11/18/2025 19:38,3.03,0.37
+int_000187,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1083_Vanilla_Bar_and_Cafe,Vanilla Bar and Cafe,visit,1,11/18/2025 19:43,9.72,0.48
+int_000505,985b9ad3-79dc-4c6a-9159-27f4dda0e235,Jayden,poi_362_Shell_Select,Shell Select,rating,3,11/18/2025 19:56,9.13,0.22
+int_000003,966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,poi_1295_Starbucks,Starbucks,rating,3,11/18/2025 20:23,3.03,0.37
+int_000288,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3459_McDonalds,McDonalds,visit,1,11/18/2025 21:42,3.77,0.28
+int_000289,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3459_McDonalds,McDonalds,rating,3,11/18/2025 22:06,3.77,0.28
+int_000115,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1540_Kopi_&_Tarts,Kopi & Tarts,visit,1,11/19/2025 0:47,5.6,0.44
+int_000116,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1540_Kopi_&_Tarts,Kopi & Tarts,rating,3,11/19/2025 1:23,5.6,0.44
+int_000365,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1261_Nanyang_Old_Coffee,Nanyang Old Coffee,search,1,11/20/2025 5:32,12.84,0.44
+int_000438,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1564_Revelry,Revelry,search,1,11/20/2025 6:29,3.42,0.51
+int_000030,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_1117_Foot_code,Foot code,search,1,11/20/2025 14:35,5.53,0.37
+int_000448,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_335_Shell_Select,Shell Select,visit,1,11/20/2025 20:00,3.91,0.19
+int_000363,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1261_Nanyang_Old_Coffee,Nanyang Old Coffee,visit,1,11/20/2025 20:32,12.84,0.44
+int_000364,d9093d18-b959-4ff3-b69a-a1748460cb5e,Brian,poi_1261_Nanyang_Old_Coffee,Nanyang Old Coffee,rating,3,11/20/2025 21:19,12.84,0.44
+int_000028,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_1117_Foot_code,Foot code,visit,1,11/20/2025 21:35,5.53,0.37
+int_000272,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3462_Dominos,Dominos,visit,1,11/20/2025 22:04,2.8,0.28
+int_000029,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_1117_Foot_code,Foot code,rating,3,11/20/2025 22:45,5.53,0.37
+int_000273,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3462_Dominos,Dominos,rating,3,11/20/2025 22:48,2.8,0.28
+int_000436,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1564_Revelry,Revelry,visit,1,11/21/2025 8:29,3.42,0.51
+int_000437,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1564_Revelry,Revelry,rating,4,11/21/2025 10:18,3.42,0.51
+int_000215,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1982_HoHo_Grill_&_Bar,HoHo Grill & Bar,visit,1,11/21/2025 22:24,2.09,0.48
+int_000216,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1982_HoHo_Grill_&_Bar,HoHo Grill & Bar,rating,5,11/21/2025 23:32,2.09,0.48
+int_000428,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1349_Drink_Stall,Drink Stall,visit,1,11/22/2025 20:37,5.36,0.51
+int_000429,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1349_Drink_Stall,Drink Stall,rating,3,11/22/2025 21:31,5.36,0.51
+int_000252,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4047_Dental_Focus,Dental Focus,search,1,11/23/2025 17:28,3.2,0.26
+int_000069,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1177_Ice_Edge_Cafe,Ice Edge Cafe,visit,1,11/24/2025 1:03,9.4,0.22
+int_000086,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1484_The_Community_Roastery_&_Cafe,The Community Roastery & Cafe,visit,1,11/24/2025 4:29,5.41,0.22
+int_000087,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_1484_The_Community_Roastery_&_Cafe,The Community Roastery & Cafe,rating,3,11/24/2025 4:38,5.41,0.22
+int_000367,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3488_Dominos,Dominos,visit,1,11/25/2025 2:30,1.09,0.28
+int_000368,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3488_Dominos,Dominos,rating,4,11/25/2025 4:22,1.09,0.28
+int_000250,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4047_Dental_Focus,Dental Focus,visit,1,11/25/2025 8:28,3.2,0.26
+int_000251,84273d4e-1e2c-4baf-8f0d-7b4f2ef833d0,Noah,poi_4047_Dental_Focus,Dental Focus,rating,2,11/25/2025 9:29,3.2,0.26
+int_000378,6c32074e-c671-44f7-951a-422b74159885,David,poi_1010_Popular,Popular,visit,1,11/25/2025 23:34,7.91,0.28
+int_000343,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1360_LiHO,LiHO,visit,1,11/26/2025 3:46,4,0.51
+int_000441,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1561_Xo_Cafe,Xo Cafe,search,1,11/26/2025 14:34,7.55,0.51
+int_000372,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_137_NTUC_FairPrice,NTUC FairPrice,visit,1,11/26/2025 20:38,6.03,0.28
+int_000098,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_465_retail_shop,retail shop,search,1,11/26/2025 21:03,7.26,0.22
+int_000373,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_137_NTUC_FairPrice,NTUC FairPrice,rating,3,11/26/2025 22:32,6.03,0.28
+int_000443,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_1586_State_Of_Mind,State Of Mind,visit,1,11/27/2025 4:05,0.59,0.37
+int_000444,20fa62fd-59ef-4d4f-8cb4-9389b70ac389,Freya,poi_1586_State_Of_Mind,State Of Mind,rating,4,11/27/2025 4:24,0.59,0.37
+int_000439,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1561_Xo_Cafe,Xo Cafe,visit,1,11/27/2025 6:34,7.55,0.51
+int_000440,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1561_Xo_Cafe,Xo Cafe,rating,4,11/27/2025 6:48,7.55,0.51
+int_000096,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_465_retail_shop,retail shop,visit,1,11/28/2025 6:03,7.26,0.22
+int_000097,ed4d4ddf-8829-49c2-b540-b0c8aa36dfcf,Maya,poi_465_retail_shop,retail shop,rating,3,11/28/2025 7:22,7.26,0.22
+int_000527,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1200_Sam_Yat_Coffee,Sam Yat Coffee,visit,1,11/28/2025 8:33,8.68,0.51
+int_000300,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_3707_San.wich_by_Swee_Heng,San.wich by Swee Heng,visit,1,11/28/2025 9:13,11.16,0.37
+int_000528,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1200_Sam_Yat_Coffee,Sam Yat Coffee,rating,3,11/28/2025 9:17,8.68,0.51
+int_000301,0fa06458-d7df-42c6-9de2-c32c36c16707,Liam,poi_3707_San.wich_by_Swee_Heng,San.wich by Swee Heng,rating,3,11/28/2025 10:10,11.16,0.37
+int_000165,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1079_Eight_Cafe_&_Bar,Eight Cafe & Bar,visit,1,11/28/2025 20:25,10.06,0.48
+int_000166,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1079_Eight_Cafe_&_Bar,Eight Cafe & Bar,rating,3,11/28/2025 20:46,10.06,0.48
+int_000126,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_4694_Heritage_Hostel,Heritage Hostel,visit,1,11/29/2025 1:31,7.26,0.22
+int_000331,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1594_Por_Kee_Eating_House_1996,Por Kee Eating House 1996,visit,1,11/29/2025 3:22,11.3,0.51
+int_000127,6b60d5cf-63cc-4dc4-9bbe-74da03df19db,Sophia,poi_4694_Heritage_Hostel,Heritage Hostel,rating,3,11/29/2025 3:22,7.26,0.22
+int_000332,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_1594_Por_Kee_Eating_House_1996,Por Kee Eating House 1996,rating,3,11/29/2025 3:48,11.3,0.51
+int_000237,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1918_Anglo_Indian_Cafe_&_Bar,Anglo Indian Cafe & Bar,search,1,11/29/2025 20:37,7.85,0.48
+int_000035,91d45a60-1f23-45f2-a343-a51017f818d9,Lucas,poi_397_7-Eleven,7-Eleven,visit,1,11/29/2025 21:58,5.85,0.19
+int_000374,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3576_Sarpinos_Pizza,Sarpinos Pizza,visit,1,11/30/2025 0:38,12.99,0.28
+int_000375,bdfc5ba3-1843-4148-aef4-5f25b90608d4,Sam,poi_3576_Sarpinos_Pizza,Sarpinos Pizza,rating,3,11/30/2025 1:03,12.99,0.28
+int_000226,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_3368_Polo_Club_Restaurant_&_Bar,Polo Club Restaurant & Bar,visit,1,11/30/2025 2:04,3.94,0.71
+int_000487,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_3820_Paul,Paul,visit,1,11/30/2025 9:17,7.97,0.22
+int_000488,dc678a8d-37ff-4a54-9a6a-da7252d1b855,Elise,poi_3820_Paul,Paul,rating,3,11/30/2025 10:07,7.97,0.22
+int_000235,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1918_Anglo_Indian_Cafe_&_Bar,Anglo Indian Cafe & Bar,visit,1,11/30/2025 18:37,7.85,0.48
+int_000236,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1918_Anglo_Indian_Cafe_&_Bar,Anglo Indian Cafe & Bar,rating,3,11/30/2025 19:33,7.85,0.48
+int_000281,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3333_Boon_Lay_Food_Court,Boon Lay Food Court,visit,1,11/30/2025 21:15,3.68,0.28
+int_000282,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3333_Boon_Lay_Food_Court,Boon Lay Food Court,rating,3,11/30/2025 22:33,3.68,0.28
+int_000076,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1406_Koi_Th,Koi Th,search,1,12/1/2025 12:59,14.21,0.22
+int_000381,6c32074e-c671-44f7-951a-422b74159885,David,poi_4925_DBS_Treasures,DBS Treasures,search,1,12/1/2025 17:37,10.57,0.28
+int_000074,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1406_Koi_Th,Koi Th,visit,1,12/2/2025 0:59,14.21,0.22
+int_000075,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1406_Koi_Th,Koi Th,rating,2,12/2/2025 1:14,14.21,0.22
+int_000395,6c32074e-c671-44f7-951a-422b74159885,David,poi_4755_OCBC_Bank,OCBC Bank,visit,1,12/2/2025 19:19,13.54,0.28
+int_000396,6c32074e-c671-44f7-951a-422b74159885,David,poi_4755_OCBC_Bank,OCBC Bank,rating,3,12/2/2025 20:25,13.54,0.28
+int_000379,6c32074e-c671-44f7-951a-422b74159885,David,poi_4925_DBS_Treasures,DBS Treasures,visit,1,12/3/2025 1:37,10.57,0.28
+int_000380,6c32074e-c671-44f7-951a-422b74159885,David,poi_4925_DBS_Treasures,DBS Treasures,rating,3,12/3/2025 2:33,10.57,0.28
+int_000055,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1107_Fun_Toast,Fun Toast,search,1,12/3/2025 18:30,10.04,0.22
+int_000054,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1107_Fun_Toast,Fun Toast,visit,1,12/3/2025 23:30,10.04,0.22
+int_000308,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_822_Tako_Aljunied,Tako Aljunied,visit,1,12/3/2025 23:45,13.29,0.26
+int_000309,bc6799a8-00d1-4ab5-80bf-eeffc36ba029,Kai,poi_822_Tako_Aljunied,Tako Aljunied,rating,4,12/4/2025 0:09,13.29,0.26
+int_000201,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_3978_Dr._W_Family_Clinic,Dr. W Family Clinic,visit,1,12/4/2025 2:46,4.52,0.56
+int_000202,af0e718d-4cca-4308-a72e-221b3f2fbe9e,Kai,poi_3978_Dr._W_Family_Clinic,Dr. W Family Clinic,rating,5,12/4/2025 2:54,4.52,0.56
+int_000513,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1598_That_Coffee_Place,That Coffee Place,visit,1,12/4/2025 6:15,5.73,0.26
+int_000514,e84b1e1f-de1f-4d49-85fc-28d7b0e8b86b,Bobby,poi_1598_That_Coffee_Place,That Coffee Place,rating,2,12/4/2025 7:53,5.73,0.26
+int_000229,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1688_Restaurant_Barakath_(_),Restaurant Barakath ( ),visit,1,12/4/2025 20:06,6.33,0.48
+int_000230,11069943-47a6-46e4-87ca-fa7d38142abc,Isla,poi_1688_Restaurant_Barakath_(_),Restaurant Barakath ( ),rating,3,12/4/2025 20:28,6.33,0.48
+int_000290,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3717_Subway,Subway,visit,1,12/4/2025 23:35,3.03,0.28
+int_000291,79dfa2c9-fcaf-4ac0-9cf6-acdc3165f1db,Zara,poi_3717_Subway,Subway,rating,3,12/5/2025 0:52,3.03,0.28
+int_000047,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1282_Cafe_O,Cafe O,search,1,12/6/2025 11:15,14.01,0.22
+int_000182,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_4233_IQ_Fightclub,IQ Fightclub,search,1,12/6/2025 13:18,6.58,0.24
+int_000435,da4ea5cf-d90f-4105-9a6e-f9f38252d01c,Noah,poi_1521_Little_Glass_Stand,Little Glass Stand,visit,1,12/7/2025 3:09,13.19,0.51
+int_000180,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_4233_IQ_Fightclub,IQ Fightclub,visit,1,12/7/2025 3:18,6.58,0.24
+int_000181,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_4233_IQ_Fightclub,IQ Fightclub,rating,3,12/7/2025 3:39,6.58,0.24
+int_000394,6c32074e-c671-44f7-951a-422b74159885,David,poi_5302_UOB,UOB,visit,1,12/7/2025 20:13,11.53,0.28
+int_000185,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1359_MEME_Bistro_Bar,MEME Bistro Bar,visit,1,12/8/2025 0:16,6.95,0.48
+int_000186,13e7ba11-c5a9-4f73-86d2-0f2c058891c7,Maya,poi_1359_MEME_Bistro_Bar,MEME Bistro Bar,rating,3,12/8/2025 0:55,6.95,0.48
+int_000045,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1282_Cafe_O,Cafe O,visit,1,12/8/2025 6:15,14.01,0.22
+int_000046,4fbee9f0-804a-4e5d-834e-553670746410,Ethan,poi_1282_Cafe_O,Cafe O,rating,3,12/8/2025 7:43,14.01,0.22
