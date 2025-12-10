@@ -1,0 +1,6 @@
+user_id,user_name,level,rank,poi_id,poi_name,score,type,category,price,popularity
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,0,1,poi_1402_CHICHA_San_Chen,CHICHA San Chen,88.12451998030984,Individual POI,cafe,14.38 - 21.94,4
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,0,2,poi_1586_State_Of_Mind,State Of Mind,81.28903134242276,Individual POI,cafe,12.06 - 21.63,5
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,0,3,poi_1164_Unicorn_Kampung_1200,Unicorn Kampung 1200,77.14136230048126,Individual POI,cafe,11.73 - 20.71,4
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,0,4,poi_1490_iTea,iTea,20.604381708297776,Individual POI,cafe,12.50 - 18.28,5
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,0,5,poi_883_Dakshaini_Silks,Dakshaini Silks,11.610974616284544,Individual POI,clothing_store,10.57 - 18.12,5
