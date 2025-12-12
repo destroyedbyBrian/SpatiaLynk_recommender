@@ -1,6 +1,6 @@
 user_id,user_name,level,rank,poi_id,poi_name,score,type,num_pois
-966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,1,container_Yio_Chu_Kang,Yio Chu Kang,25.197811704606586,Container/Venue,99
-966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,2,street_Upper_Dickson_Road_ROCHOR,Upper Dickson Road,24.248481489269004,Container/Venue,7
-966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,3,street_Wishart_Road_BUKIT_MERAH,Wishart Road,23.825948962171015,Container/Venue,1
-966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,4,street_Medical_Drive_QUEENSTOWN,Medical Drive,22.605106631182665,Container/Venue,1
-966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,5,street_Serangoon_Road_ROCHOR,Serangoon Road,22.447415296985938,Container/Venue,37
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,1,street_Upper_Dickson_Road_ROCHOR,Upper Dickson Road,49.631151113196516,Container/Venue,7
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,2,container_Yio_Chu_Kang,Yio Chu Kang,49.48017452754627,Container/Venue,99
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,3,street_Wishart_Road_BUKIT_MERAH,Wishart Road,49.340985187680346,Container/Venue,1
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,4,street_Medical_Drive_QUEENSTOWN,Medical Drive,48.6348710798027,Container/Venue,1
+966592ed-5bfd-4113-9c4d-d93cd3637b40,Aiden,1,5,street_Serangoon_Road_ROCHOR,Serangoon Road,48.550377113542226,Container/Venue,37
