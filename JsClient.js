@@ -5,7 +5,7 @@ import { Client } from "@huggingface/client";
     //  -> arguments : source (url) & options (token + status_callback)
     //  -> returns : an obj that allows you to make calls to the API
 const app = await Client.connect("destroyedbyBrian/spatiaLynk_recommender", {
-  token: "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",
+  token: process.env.HF_TOKEN,
   status_callback: (status) => {
     console.log("Status:", status);
   } 
