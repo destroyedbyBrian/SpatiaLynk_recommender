@@ -73,13 +73,17 @@ async def get_recommendations(request: RecommendationRequest):
             result["explanations"][f"level_{level}"] = []
             
             for poi_id, score, poi_info in recs:
+                poi_data = framework.poi_tree[f'level_{level}'][poi_id]
+
                 # Add recommendation
                 result["recommendations"][f"level_{level}"].append({
                     "poi_id": poi_id,
                     "name": poi_info['name'],
                     "score": float(score),
                     "type": poi_info['type'],
-                    "details": poi_info
+                    "details": poi_info,
+                    "latitude": poi_data.get('spatial', [None, None])[0],  
+                    "longitude": poi_data.get('spatial', [None, None])[1],
                 })
                 
                 # Add explanation
