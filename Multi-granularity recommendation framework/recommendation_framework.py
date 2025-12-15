@@ -492,12 +492,12 @@ class MultiGranularityRecommendationFramework:
     # ========================================================================
     
     def recommend_at_level(self,
-                          user_id: str,
-                          level: int,
-                          top_k: int = 10,
-                          filter_visited: bool = True,
-                          use_constraints: bool = False,
-                          **kwargs) -> List[Tuple[str, float, Dict]]:
+                      user_id: str,
+                      level: int,
+                      top_k: int = 10,
+                      filter_visited: bool = True,
+                      use_constraints: bool = False,
+                      parsed_intent: Optional[Dict] = None) -> List[Tuple[str, float, Dict]]:
         """
         Generate recommendations at specific granularity level
         
@@ -507,6 +507,7 @@ class MultiGranularityRecommendationFramework:
             top_k: Number of recommendations
             filter_visited: Filter out visited POIs
             use_constraints: Apply user constraints (only for level 0)
+            parsed_intent: Parsed user prompt with categories, location, etc.
         
         Returns:
             List of (poi_id, score, poi_info) tuples
@@ -517,34 +518,41 @@ class MultiGranularityRecommendationFramework:
         level_key = f'level_{level}'
         all_poi_ids = list(self.poi_tree[level_key].keys())
         
-        # Get visited POIs at this level
         visited_pois = set(self.user_history.get(user_id, {}).get(level, []))
         
-        # Score all POIs
         poi_scores = []
         
         for poi_id in all_poi_ids:
             if filter_visited and poi_id in visited_pois:
                 continue
-            
-            score = self.compute_multi_granularity_score(
-                user_id, poi_id, level, **kwargs
-            )
+
+            # Compute base score 
+            score = self.compute_multi_granularity_score(user_id, poi_id, level)
+
+            # Apply intent boost if parsed_intent exists
+            if parsed_intent:
+                intent_boost = self._compute_intent_boost(poi_id, level, parsed_intent, user_id)
+                score = score * intent_boost
             
             poi_scores.append((poi_id, score))
         
-        # Sort by score
+        # Sort by score descending
         poi_scores.sort(key=lambda x: x[1], reverse=True)
+
+        # Category filtering
+        if parsed_intent and parsed_intent.get('categories') and level == 0:
+            category_filtered = self._filter_by_categories(poi_scores, parsed_intent['categories'])
+            if len(category_filtered) >= top_k // 2:
+                poi_scores = category_filtered + [p for p in poi_scores if p not in category_filtered]
         
         # Get top-K
         top_pois = poi_scores[:top_k]
         
-        # Add POI information
+        # Build recommendations with POI info
         recommendations = []
         for poi_id, score in top_pois:
             poi_data = self.poi_tree[level_key][poi_id]
             
-            # Build info based on level
             if level == 0:
                 poi_info = {
                     'name': poi_data['name'],
@@ -555,7 +563,6 @@ class MultiGranularityRecommendationFramework:
                     'type': 'Individual POI'
                 }
             elif level == 1:
-                # Container (e.g., mall, building)
                 children = poi_data.get('children', [])
                 poi_info = {
                     'name': poi_data['name'],
@@ -564,7 +571,6 @@ class MultiGranularityRecommendationFramework:
                     'type': 'Container/Venue'
                 }
             elif level == 2:
-                # District
                 children = poi_data.get('children', [])
                 poi_info = {
                     'name': poi_data['name'],
@@ -573,7 +579,6 @@ class MultiGranularityRecommendationFramework:
                     'type': 'District'
                 }
             else:  # level == 3
-                # Region
                 children = poi_data.get('children', [])
                 poi_info = {
                     'name': poi_data['name'],
@@ -586,30 +591,178 @@ class MultiGranularityRecommendationFramework:
         
         return recommendations
     
-    def recommend_multi_granularity(self,
-                                   user_id: str,
-                                   levels: List[int] = [0, 1, 2, 3],
-                                   top_k_per_level: int = 5,
-                                   filter_visited: bool = True,
-                                   **kwargs) -> Dict[int, List[Tuple[str, float, Dict]]]:
+    def _compute_intent_boost(self, 
+                         poi_id: str, 
+                         level: int, 
+                         parsed_intent: Dict,
+                         user_id: str) -> float:
         """
-        Generate recommendations at multiple granularity levels
+        Compute boost factor based on how well POI matches user's intent
+        """
+        boost = 1.0
+        level_key = f'level_{level}'
+        
+        try:
+            poi_data = self.poi_tree[level_key].get(poi_id)
+            if not poi_data:
+                return boost
+            
+            # 1. CATEGORY MATCH BOOST
+            if level == 0 and parsed_intent.get('categories'):
+                poi_data_dict = poi_data.get('data', {})
+                poi_category = poi_data_dict.get('category', '').lower()
+                requested_categories = [c.lower() for c in parsed_intent['categories']]
+                
+                if any(req_cat in poi_category for req_cat in requested_categories):
+                    boost *= 1.5
+            
+            # 2. LOCATION/DISTANCE BOOST
+            if parsed_intent.get('search_location'):
+                search_lat = parsed_intent['search_location'].get('latitude')
+                search_lon = parsed_intent['search_location'].get('longitude')
+                
+                if search_lat and search_lon and level == 0:
+                    poi_spatial = poi_data.get('spatial')
+                    if isinstance(poi_spatial, str):
+                        try:
+                            poi_spatial = eval(poi_spatial)
+                        except:
+                            poi_spatial = None
+                    
+                    if poi_spatial and isinstance(poi_spatial, (list, tuple)) and len(poi_spatial) >= 2:
+                        poi_lat, poi_lon = poi_spatial[0], poi_spatial[1]
+                        
+                        distance = self._haversine_distance(
+                            search_lat, search_lon, 
+                            poi_lat, poi_lon
+                        )
+                        
+                        max_distance = parsed_intent.get('max_distance_km', 5.0)
+                        
+                        if distance <= max_distance:
+                            proximity_boost = 1.0 + (1.0 - (distance / max_distance)) * 0.8
+                            boost *= proximity_boost
+                        else:
+                            boost *= 0.5
+            
+            # 3. "NEAR ME" DETECTION
+            if 'near me' in parsed_intent.get('raw_prompt', '').lower():
+                if not parsed_intent.get('search_location'):
+                    user_row = self.users_df[self.users_df['uudi'] == user_id]
+                    if not user_row.empty:
+                        user_row = user_row.iloc[0]
+                        area_coords = {
+                            'Jurong East': (1.3329, 103.7436),
+                            'Yishun': (1.4304, 103.8354),
+                            'Bishan': (1.3526, 103.8352),
+                            'Tampines': (1.3496, 103.9568),
+                            'Woodlands': (1.4382, 103.7891),
+                            'Ang Mo Kio': (1.3691, 103.8454),
+                            'Bedok': (1.3236, 103.9273),
+                            'Clementi': (1.3162, 103.7649),
+                            'Hougang': (1.3612, 103.8864),
+                            'Punggol': (1.4054, 103.9021),
+                            'Sengkang': (1.3868, 103.8914),
+                        }
+                        
+                        user_area = user_row['area_of_residence']
+                        if user_area in area_coords:
+                            user_lat, user_lon = area_coords[user_area]
+                            
+                            poi_spatial = poi_data.get('spatial')
+                            if isinstance(poi_spatial, str):
+                                try:
+                                    poi_spatial = eval(poi_spatial)
+                                except:
+                                    poi_spatial = None
+                            
+                            if poi_spatial and isinstance(poi_spatial, (list, tuple)) and len(poi_spatial) >= 2:
+                                poi_lat, poi_lon = poi_spatial[0], poi_spatial[1]
+                                distance = self._haversine_distance(user_lat, user_lon, poi_lat, poi_lon)
+                                
+                                if distance <= 3.0:
+                                    boost *= 1.8
+                                elif distance <= 5.0:
+                                    boost *= 1.3
+                                else:
+                                    boost *= 0.6
+            
+            # 4. NAMED LOCATION BOOST
+            if parsed_intent.get('location_mentioned'):
+                mentioned_location = parsed_intent['location_mentioned'].lower()
+                
+                poi_data_dict = poi_data.get('data', {})
+                poi_region = poi_data_dict.get('region', '').lower()
+                poi_district = poi_data_dict.get('district', '').lower()
+                poi_name = poi_data.get('name', '').lower()
+                
+                if (mentioned_location in poi_region or 
+                    mentioned_location in poi_district or 
+                    mentioned_location in poi_name):
+                    boost *= 1.7
+            
+            # Clamp boost to reasonable range
+            boost = max(0.3, min(boost, 2.5))
+            
+        except Exception as e:
+            print(f"⚠️ Error in _compute_intent_boost for POI {poi_id}: {e}")
+            # Return neutral boost if error
+            boost = 1.0
+        
+        return boost
+    
+    def _filter_by_categories(self, 
+                            poi_scores: List[Tuple[str, float]], 
+                            categories: List[str]) -> List[Tuple[str, float]]:
+        """
+        Filter POI scores to only include matching categories
         
         Args:
-            user_id: User ID
-            levels: List of levels to generate recommendations for
-            top_k_per_level: Number of recommendations per level
-            filter_visited: Filter visited POIs
+            poi_scores: List of (poi_id, score) tuples
+            categories: List of category strings to match
         
         Returns:
-            Dictionary mapping level -> recommendations
+            Filtered list of (poi_id, score) tuples
         """
+        filtered = []
+        
+        for poi_id, score in poi_scores:
+            poi_data = self.poi_tree['level_0'][poi_id]
+            poi_category = poi_data['data'].get('category', '').lower()
+            
+            # Check if POI category matches any requested category
+            if any(cat.lower() in poi_category for cat in categories):
+                filtered.append((poi_id, score))
+        
+        return filtered
+
+    def recommend_multi_granularity(self,
+                               user_id: str,
+                               levels: List[int] = [0, 1, 2, 3],
+                               top_k_per_level: int = 5,
+                               filter_visited: bool = True,
+                               prompt: str = None,
+                               current_location: Dict = None) -> Dict[int, List[Tuple[str, float, Dict]]]:
+        """Generate recommendations at multiple granularity levels"""
+        
         print(f"\n{'='*70}")
         print(f"MULTI-GRANULARITY RECOMMENDATIONS FOR USER: {user_id}")
+        if prompt:
+            print(f"PROMPT: {prompt}")
+        if current_location:
+            print(f"LOCATION: {current_location}")
         print(f"{'='*70}\n")
+
+        # Parse intent from prompt
+        parsed_intent = None
+        if prompt:
+            parsed_intent = self.parse_user_prompt(prompt, current_location)
+            print(f"📝 Parsed Intent:")
+            print(f"   Categories: {parsed_intent['categories']}")
+            print(f"   Location mentioned: {parsed_intent['location_mentioned']}")
+            print()
         
         results = {}
-        
         level_names = {
             0: "INDIVIDUAL POIs",
             1: "CONTAINERS/VENUES",
@@ -619,14 +772,23 @@ class MultiGranularityRecommendationFramework:
         
         for level in levels:
             print(f"Generating Level {level} ({level_names[level]}) recommendations...")
+            
             recommendations = self.recommend_at_level(
                 user_id=user_id,
                 level=level,
                 top_k=top_k_per_level,
                 filter_visited=filter_visited,
-                **kwargs
+                use_constraints=False,
+                parsed_intent=parsed_intent
             )
+            
             results[level] = recommendations
+            
+            if recommendations:
+                print(f"   Top 3 results:")
+                for i, (poi_id, score, poi_info) in enumerate(recommendations[:3], 1):
+                    print(f"      {i}. {poi_info['name']} (score: {score:.2f})")
+            print()
         
         return results
     
@@ -1169,7 +1331,7 @@ class MultiGranularityRecommendationFramework:
         Returns:
             List of (poi_id, similarity) tuples
         """
-        visited_pois = self.user_history.get(user_id, [])
+        visited_pois = self.user_history.get(user_id, {}).get(0, [])
         
         if not visited_pois or candidate_poi not in self.poi_id_to_idx[0]:
             return []
