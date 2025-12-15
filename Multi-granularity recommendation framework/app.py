@@ -56,7 +56,9 @@ async def get_recommendations(request: RecommendationRequest):
             user_id=request.userId,
             levels=[0, 1, 2, 3],
             top_k_per_level=5,
-            filter_visited=True
+            filter_visited=True,
+            prompt=request.prompt,  
+            current_location=request.currentLocation
         )
         
         # Generate explanations
@@ -73,7 +75,16 @@ async def get_recommendations(request: RecommendationRequest):
             result["explanations"][f"level_{level}"] = []
             
             for poi_id, score, poi_info in recs:
+                # Get coordinates
                 poi_data = framework.poi_tree[f'level_{level}'][poi_id]
+                poi_spatial = poi_data.get('spatial')
+
+                latitude, longitude = None, None
+                if poi_spatial:
+                    if isinstance(poi_spatial, str):
+                        poi_spatial = eval(poi_spatial)
+                    if len(poi_spatial) >= 2:
+                        latitude, longitude = poi_spatial[0], poi_spatial[1]
 
                 # Add recommendation
                 result["recommendations"][f"level_{level}"].append({
@@ -82,8 +93,8 @@ async def get_recommendations(request: RecommendationRequest):
                     "score": float(score),
                     "type": poi_info['type'],
                     "details": poi_info,
-                    "latitude": poi_data.get('spatial', [None, None])[0],  
-                    "longitude": poi_data.get('spatial', [None, None])[1],
+                    "latitude": latitude,
+                    "longitude": longitude
                 })
                 
                 # Add explanation
