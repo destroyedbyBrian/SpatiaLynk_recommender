@@ -23,11 +23,11 @@ class MultiGranularityRecommendationFramework:
     """
     
     def __init__(self,
-                 embeddings_file: str = 'embeddings.pkl',
-                 interaction_learning_file: str = 'interaction_learning.pkl',
-                 poi_tree_file: str = 'poi_tree.json',
-                 users_file: str = 'users.csv',
-                 interactions_file: str = 'user_poi_interactions.csv'):
+                embeddings_file: str = 'embeddings.pkl',
+                interaction_learning_file: str = 'interaction_learning.pkl',
+                poi_tree_file: str = 'poi_tree.json',
+                users_file: str = 'users.csv',
+                interactions_file: str = 'user_poi_interactions.csv'):
         """Initialize the recommendation framework"""
         print("="*70)
         print("INITIALIZING MULTI-GRANULARITY RECOMMENDATION FRAMEWORK")
