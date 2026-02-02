@@ -7,6 +7,7 @@ from typing import Dict, List, Tuple, Optional
 from sklearn.metrics.pairwise import cosine_similarity
 from collections import defaultdict
 import math
+import random
 import warnings
 warnings.filterwarnings('ignore')
 import re
@@ -60,7 +61,7 @@ class MultiGranularityRecommendationFramework:
         
         # Load POI tree
         print("Loading POI tree...")
-        with open(poi_tree_file, 'r') as f:
+        with open(poi_tree_file, 'r', encoding='utf-8') as f:
             self.poi_tree = json.load(f)
         
         # Load raw data
@@ -70,6 +71,9 @@ class MultiGranularityRecommendationFramework:
         
         # Build indices
         self._build_indices()
+
+        # Deterministic sampler for candidate reduction
+        self._rng = random.Random(42)
         
         # Initialize hyperparameters
         self.alpha = 0.5   # Weight for feature-based score
@@ -497,7 +501,8 @@ class MultiGranularityRecommendationFramework:
                       top_k: int = 10,
                       filter_visited: bool = True,
                       use_constraints: bool = False,
-                      parsed_intent: Optional[Dict] = None) -> List[Tuple[str, float, Dict]]:
+                      parsed_intent: Optional[Dict] = None,
+                      max_candidates: int = 250) -> List[Tuple[str, float, Dict]]:
         """
         Generate recommendations at specific granularity level
         
@@ -517,12 +522,53 @@ class MultiGranularityRecommendationFramework:
         
         level_key = f'level_{level}'
         all_poi_ids = list(self.poi_tree[level_key].keys())
+
+        # Candidate reduction for performance + relevance (level 0 only)
+        candidates = all_poi_ids
+        if parsed_intent and parsed_intent.get('categories') and level == 0:
+            cats = [c.lower() for c in parsed_intent['categories']]
+            candidates = []
+            for pid in all_poi_ids:
+                poi_data = self.poi_tree[level_key][pid]
+                poi_category = poi_data.get('data', {}).get('category', '').lower()
+                if any(cat in poi_category for cat in cats):
+                    candidates.append(pid)
+            # If category filter is too narrow, fall back to all
+            if len(candidates) < 50:
+                candidates = all_poi_ids
+
+        # Distance-based prefilter if location is provided (level 0 only)
+        if parsed_intent and parsed_intent.get('search_location') and level == 0:
+            search_lat = parsed_intent['search_location'].get('latitude')
+            search_lon = parsed_intent['search_location'].get('longitude')
+            max_km = parsed_intent.get('max_distance_km', 5.0) or 5.0
+            if search_lat and search_lon:
+                filtered = []
+                for pid in candidates:
+                    poi_data = self.poi_tree[level_key][pid]
+                    poi_spatial = poi_data.get('spatial')
+                    if isinstance(poi_spatial, str):
+                        try:
+                            poi_spatial = eval(poi_spatial)
+                        except Exception:
+                            poi_spatial = None
+                    if poi_spatial and isinstance(poi_spatial, (list, tuple)) and len(poi_spatial) >= 2:
+                        poi_lat, poi_lon = poi_spatial[0], poi_spatial[1]
+                        dist = self._haversine_distance(search_lat, search_lon, poi_lat, poi_lon)
+                        if dist <= max_km:
+                            filtered.append(pid)
+                # If distance filter empties candidates, keep original
+                if filtered:
+                    candidates = filtered
+
+        if max_candidates and len(candidates) > max_candidates:
+            candidates = self._rng.sample(candidates, max_candidates)
         
         visited_pois = set(self.user_history.get(user_id, {}).get(level, []))
         
         poi_scores = []
         
-        for poi_id in all_poi_ids:
+        for poi_id in candidates:
             if filter_visited and poi_id in visited_pois:
                 continue
 
@@ -705,7 +751,7 @@ class MultiGranularityRecommendationFramework:
             boost = max(0.3, min(boost, 2.5))
             
         except Exception as e:
-            print(f"⚠️ Error in _compute_intent_boost for POI {poi_id}: {e}")
+            print(f"Warning: Error in _compute_intent_boost for POI {poi_id}: {e}")
             # Return neutral boost if error
             boost = 1.0
         
@@ -757,7 +803,7 @@ class MultiGranularityRecommendationFramework:
         parsed_intent = None
         if prompt:
             parsed_intent = self.parse_user_prompt(prompt, current_location)
-            print(f"📝 Parsed Intent:")
+            print("Parsed Intent:")
             print(f"   Categories: {parsed_intent['categories']}")
             print(f"   Location mentioned: {parsed_intent['location_mentioned']}")
             print()
