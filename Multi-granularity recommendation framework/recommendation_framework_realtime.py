@@ -1,12 +1,3 @@
-# recommendation_framework_realtime.py
-# FINAL (submission-ready)
-# - Robust embeddings.pkl loader (dict/list/records + inconsistent vector lengths)
-# - Loads POI tree across level_0..level_3 (includes container malls)
-# - Primary intent locking (prevents shopping dominating cafe/supermarket)
-# - Container intent for "shopping malls"
-# - Fallback ladder: strict -> widened -> full catalog
-# - Output bucketed by level (level_0..level_3)
-
 from __future__ import annotations
 
 import json
