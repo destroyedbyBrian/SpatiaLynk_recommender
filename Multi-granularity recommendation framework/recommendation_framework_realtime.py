@@ -3,12 +3,24 @@ from __future__ import annotations
 import json
 import pickle
 import re
+import math
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from collections import defaultdict
 
 import numpy as np
+
+
+# ---------------------------
+# Defaults
+# ---------------------------
+
+# Temporary default location: central SG (Dhoby Ghaut-ish)
+DEFAULT_LOCATION = {"latitude": 1.2996, "longitude": 103.8455}
+
+# Progressive radius expansion (km). None = no limit.
+RADIUS_TIERS_KM = [1.0, 3.0, 8.0, None]
 
 
 # ---------------------------
@@ -32,30 +44,25 @@ INTENT_KEYWORDS = {
     "view": ["viewpoint", "views", "view", "skyline", "observation", "lookout"],
 }
 
-# Strict mapping to dataset categories
 INTENT_CATEGORIES = {
     "shopping": {"shopping_mall", "department_store", "clothing_store", "electronics_store", "jewelry_store", "bookstore"},
     "supermarket": {"supermarket", "convenience_store"},
     "food": {"restaurant", "fast_food"},
     "cafe": {"cafe", "bakery"},
-    # dataset doesn’t have "museum" category → map to closest
     "culture": {"attraction", "viewpoint", "bookstore"},
     "nature": {"attraction", "viewpoint"},
     "view": {"viewpoint"},
 }
 
-# Penalize common drift categories (now applied using PRIMARY intent only)
+# Penalize drift categories based on PRIMARY intent only
 INTENT_EXCLUDE = {
-    # if user wants shopping, don't drift to food or groceries
     "shopping": {"restaurant", "fast_food", "cafe", "bakery", "supermarket", "convenience_store"},
-    # if user wants supermarkets, don't drift into shopping/food
     "supermarket": {"shopping_mall", "department_store", "electronics_store", "clothing_store", "jewelry_store", "restaurant", "fast_food", "cafe", "bakery"},
-    # if user wants cafes/food, don't drift to shopping
-    "cafe": {"shopping_mall", "department_store", "electronics_store", "clothing_store", "jewelry_store", "supermarket", "convenience_store"},
-    "food": {"shopping_mall", "department_store", "electronics_store", "clothing_store", "jewelry_store", "supermarket", "convenience_store"},
+    "cafe": {"shopping_mall", "department_store", "electronics_store", "clothing_store", "jewelry_store", "supermarket", "convenience_store", "restaurant", "fast_food"},
+    "food": {"shopping_mall", "department_store", "electronics_store", "clothing_store", "jewelry_store", "supermarket", "convenience_store", "cafe", "bakery"},
+    # others can be added if needed
 }
 
-# Explicit mall/place intent
 CONTAINER_ONLY_INTENTS = {"shopping mall", "shopping malls", "mall", "malls"}
 
 
@@ -72,10 +79,7 @@ def _tokenize(text: str) -> set[str]:
 
 
 def _detect_intents(prompt: str, interests: Optional[List[str]] = None) -> List[str]:
-    """
-    Return up to 2 intents based on prompt + interests.
-    NOTE: This is multi-intent, but we will later resolve a PRIMARY intent to avoid dominance.
-    """
+    """Return up to 2 intents based on prompt + interests (multi-intent)."""
     interests = interests or []
     text = f"{prompt} " + " ".join(interests)
     t = _safe_lower(text)
@@ -101,7 +105,7 @@ def _detect_intents(prompt: str, interests: Optional[List[str]] = None) -> List[
 def _primary_intent(prompt: str, interests: List[str]) -> Optional[str]:
     """
     Choose ONE dominant intent based on prompt.
-    Shopping is treated as a fallback (last) to prevent it overpowering cafe/supermarket queries.
+    Shopping is last to prevent it overpowering more specific intents.
     """
     intents = _detect_intents(prompt, interests)
     if not intents:
@@ -114,13 +118,11 @@ def _primary_intent(prompt: str, interests: List[str]) -> Optional[str]:
         "culture",
         "nature",
         "view",
-        "shopping",   # shopping last
+        "shopping",
     ]
-
     for p in PRIORITY:
         if p in intents:
             return p
-
     return intents[0]
 
 
@@ -142,6 +144,26 @@ def _resolve_path(path_like: str | Path, base_dir: str | Path | None = None) -> 
     if base_dir is None:
         return p.resolve()
     return (Path(base_dir) / p).resolve()
+
+
+def _haversine_km(lat1: float, lon1: float, lat2: float, lon2: float) -> float:
+    """Great-circle distance between points (km)."""
+    R = 6371.0
+    phi1, phi2 = math.radians(lat1), math.radians(lat2)
+    dphi = math.radians(lat2 - lat1)
+    dlambda = math.radians(lon2 - lon1)
+    a = math.sin(dphi / 2) ** 2 + math.cos(phi1) * math.cos(phi2) * math.sin(dlambda / 2) ** 2
+    return 2 * R * math.asin(math.sqrt(a))
+
+
+def _distance_bonus_km(d_km: Optional[float]) -> float:
+    """
+    Smooth bonus: nearby places get a positive boost; far places ~0.
+    Tuned to matter within ~0-5km.
+    """
+    if d_km is None:
+        return 0.0
+    return 0.35 * (1.0 / (1.0 + d_km))
 
 
 # ---------------------------
@@ -166,7 +188,7 @@ class POIDetails:
 # ---------------------------
 
 class MultiGranularityRecommendationFramework:
-    VERSION = "realtime-final-primary-intent-v1"
+    VERSION = "realtime-final-location-v1"
 
     def __init__(
         self,
@@ -383,7 +405,7 @@ class MultiGranularityRecommendationFramework:
                     next_idx += 1
 
     # ---------------------------
-    # Users CSV (optional)
+    # Users CSV loader (optional)
     # ---------------------------
 
     def _load_user_preferences_csv(self, path: Path):
@@ -405,18 +427,18 @@ class MultiGranularityRecommendationFramework:
     # ---------------------------
 
     def health(self) -> Dict[str, Any]:
-        mall_count = sum(1 for d in self.poi_details_by_id.values() if d.category == "shopping_mall")
-        cafe_count = sum(1 for d in self.poi_details_by_id.values() if d.category == "cafe")
-        super_count = sum(1 for d in self.poi_details_by_id.values() if d.category == "supermarket")
+        def _count(cat: str) -> int:
+            return sum(1 for d in self.poi_details_by_id.values() if d.category == cat)
+
         return {
             "status": "healthy",
             "framework_loaded": True,
             "framework_version": self.VERSION,
             "total_users": len(self.user_id_to_idx),
             "total_pois_all_levels": len(self.poi_details_by_id),
-            "shopping_mall_pois_loaded": mall_count,
-            "cafe_pois_loaded": cafe_count,
-            "supermarket_pois_loaded": super_count,
+            "shopping_mall_pois_loaded": _count("shopping_mall"),
+            "cafe_pois_loaded": _count("cafe"),
+            "supermarket_pois_loaded": _count("supermarket"),
             "user_embedding_dim": int(self.user_embeddings_mat.shape[1]) if self.user_embeddings_mat.size else 0,
             "poi_embedding_dim": int(self.poi_embeddings_mat.shape[1]) if self.poi_embeddings_mat.size else 0,
         }
@@ -431,9 +453,11 @@ class MultiGranularityRecommendationFramework:
             return {"status": "error", "message": "missing user_id"}
 
         if user_id in self.user_id_to_idx:
-            self.user_profiles[user_id] = profile
+            # update profile
+            self.user_profiles[user_id] = {**self.user_profiles.get(user_id, {}), **profile}
             return {"status": "exists", "user_id": user_id}
 
+        # initialize a new embedding vector
         if self.user_embeddings_mat.size == 0:
             new_vec = np.random.normal(0, 0.01, size=(1, 64)).astype(float)
         else:
@@ -461,7 +485,7 @@ class MultiGranularityRecommendationFramework:
     def _intent_allowed_categories(self, user_profile: Dict[str, Any], prompt: str) -> List[str]:
         interests = user_profile.get("interests", []) or []
 
-        # Explicit mall queries always start strict with malls
+        # explicit malls/place intent
         if _is_container_intent(prompt):
             return ["shopping_mall"]
 
@@ -485,7 +509,7 @@ class MultiGranularityRecommendationFramework:
         prompt: str,
         user_profile: Dict[str, Any],
     ) -> float:
-        # cosine similarity if embeddings exist for this POI id
+        # embedding cosine similarity (if POI embedding exists)
         base = 0.0
         if self.poi_embeddings_mat.size > 0 and poi_id in self.poi_id_to_idx:
             pidx = self.poi_id_to_idx[poi_id]
@@ -500,7 +524,7 @@ class MultiGranularityRecommendationFramework:
         interests = user_profile.get("interests", []) or []
         primary = _primary_intent(prompt, interests)
 
-        # category boost/penalty
+        # allowed category boost/penalty
         if allowed_categories:
             allowed_set = set(allowed_categories)
             if cat in allowed_set:
@@ -514,7 +538,7 @@ class MultiGranularityRecommendationFramework:
             if cat in excluded:
                 score -= 0.85
 
-        # container mall intent: force malls up
+        # explicit mall intent: force malls up
         if _is_container_intent(prompt):
             if cat == "shopping_mall":
                 score += 0.85
@@ -524,7 +548,7 @@ class MultiGranularityRecommendationFramework:
         return score
 
     # ---------------------------
-    # Recommendation (fallback ladder + multi-level output)
+    # Recommendation (nearby-first + radius expansion + bucketed outputs)
     # ---------------------------
 
     def recommend_multi_granularity(
@@ -533,6 +557,7 @@ class MultiGranularityRecommendationFramework:
         top_k: int = 10,
         prompt: str = "",
         use_intent_filter: bool = True,
+        current_location: Optional[Dict[str, float]] = None,  # NEW
     ) -> Dict[str, List[Dict[str, Any]]]:
 
         user_id = str(user_id).strip()
@@ -545,9 +570,21 @@ class MultiGranularityRecommendationFramework:
         user_profile = self.user_profiles.get(user_id, {}) or {}
         allowed_categories = self._intent_allowed_categories(user_profile, prompt) if use_intent_filter else []
 
+        # Resolve location priority:
+        # 1) request current_location
+        # 2) profile last_location
+        # 3) DEFAULT_LOCATION
+        loc = current_location or user_profile.get("last_location") or DEFAULT_LOCATION
+        try:
+            u_lat = float(loc.get("latitude"))
+            u_lon = float(loc.get("longitude"))
+        except Exception:
+            u_lat = float(DEFAULT_LOCATION["latitude"])
+            u_lon = float(DEFAULT_LOCATION["longitude"])
+
         min_results = max(10, int(top_k))
 
-        def score_with_filter(allowed: Optional[List[str]]):
+        def score_with_filter(allowed: Optional[List[str]], max_radius_km: Optional[float]):
             out: List[Tuple[str, float]] = []
             allowed_set = set(allowed) if allowed else None
 
@@ -555,18 +592,32 @@ class MultiGranularityRecommendationFramework:
                 cat = _safe_lower(det.category)
                 if allowed_set is not None and cat and cat not in allowed_set:
                     continue
-                s = self._score_user_poi(uvec, pid, det, allowed or [], prompt, user_profile)
-                out.append((pid, s))
+
+                d_km: Optional[float] = None
+                if det.latitude is not None and det.longitude is not None:
+                    d_km = _haversine_km(u_lat, u_lon, float(det.latitude), float(det.longitude))
+                    if max_radius_km is not None and d_km > max_radius_km:
+                        continue
+
+                base_score = self._score_user_poi(uvec, pid, det, allowed or [], prompt, user_profile)
+                score = base_score + _distance_bonus_km(d_km)
+                out.append((pid, score))
+
             return out
 
-        # Pass 1:
-        # If container intent, strictly score malls first across all levels
+        # --- Pass 1: strict intent filter (with radius expansion) ---
+        scored: List[Tuple[str, float]] = []
         if _is_container_intent(prompt):
-            scored = score_with_filter(["shopping_mall"])
+            strict_allowed = ["shopping_mall"]
         else:
-            scored = score_with_filter(allowed_categories if allowed_categories else None)
+            strict_allowed = allowed_categories if allowed_categories else None
 
-        # Pass 2: If still too few, widen to primary intent categories (or shopping set for malls)
+        for r in RADIUS_TIERS_KM:
+            scored = score_with_filter(strict_allowed, r)
+            if len(scored) >= min_results:
+                break
+
+        # --- Pass 2: widen categories (with radius expansion) ---
         if len(scored) < min_results:
             interests = user_profile.get("interests", []) or []
             primary = _primary_intent(prompt, interests)
@@ -579,12 +630,18 @@ class MultiGranularityRecommendationFramework:
                 widened = []
 
             if widened:
-                scored = score_with_filter(widened)
+                for r in RADIUS_TIERS_KM:
+                    scored = score_with_filter(widened, r)
+                    if len(scored) >= min_results:
+                        break
                 allowed_categories = widened
 
-        # Pass 3: last resort full catalog
+        # --- Pass 3: full catalog (with radius expansion) ---
         if len(scored) < min_results:
-            scored = score_with_filter(None)
+            for r in RADIUS_TIERS_KM:
+                scored = score_with_filter(None, r)
+                if len(scored) >= min_results:
+                    break
 
         scored.sort(key=lambda x: x[1], reverse=True)
         top = scored[: max(1, int(top_k))]

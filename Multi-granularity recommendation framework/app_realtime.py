@@ -27,7 +27,7 @@ class RecommendationRequest(BaseModel):
 
 app = FastAPI(
     title="Multi-Granularity POI Recommendation API (Realtime)",
-    version="1.0.0",
+    version="1.1.0",
 )
 
 app.add_middleware(
@@ -57,7 +57,6 @@ def _resolve(base_dir: Path, p: str) -> str:
         if matches:
             return str(matches[0])
 
-    # if embeddings.pkl not found, pick any embedding-related pkl
     if name.lower() == "embeddings.pkl":
         for root in [base_dir, base_dir.parent]:
             candidates2 = sorted([x for x in root.rglob("*.pkl") if "embedding" in x.name.lower()])
@@ -68,7 +67,7 @@ def _resolve(base_dir: Path, p: str) -> str:
 
 
 print("\n" + "=" * 70)
-print("LOADING RECOMMENDATION FRAMEWORK (REALTIME)...")
+print("LOADING RECOMMENDATION FRAMEWORK (REALTIME, LOCATION-AWARE)...")
 print("=" * 70)
 
 try:
@@ -125,12 +124,18 @@ async def get_recommendations(request: RecommendationRequest):
     if framework is None:
         raise HTTPException(status_code=503, detail="Framework not loaded")
 
+    # Store last location if provided
+    if request.currentLocation:
+        framework.user_profiles.setdefault(request.userId, {})
+        framework.user_profiles[request.userId]["last_location"] = request.currentLocation
+
     try:
         recs = framework.recommend_multi_granularity(
             user_id=request.userId,
             top_k=10,
             prompt=request.prompt,
             use_intent_filter=True,
+            current_location=request.currentLocation,  # NEW
         )
         return {
             "success": True,
@@ -141,7 +146,6 @@ async def get_recommendations(request: RecommendationRequest):
         }
 
     except ValueError as e:
-        # user not found etc
         raise HTTPException(status_code=404, detail=str(e))
 
     except Exception as e:
