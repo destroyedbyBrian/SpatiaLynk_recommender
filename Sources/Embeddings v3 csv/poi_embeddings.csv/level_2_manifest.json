@@ -1,0 +1,25 @@
+{
+  "level": "level_2",
+  "level_name": "District",
+  "n_pois": 44,
+  "dimensions": {
+    "total": 125,
+    "Y_A_explicit": 53,
+    "Y_T_derived": 72
+  },
+  "column_indices": {
+    "Y_A_range": [
+      0,
+      52
+    ],
+    "Y_T_range": [
+      53,
+      124
+    ]
+  },
+  "example_pois": [
+    "district_BEDOK_EAST",
+    "district_TOA_PAYOH_CENTRAL",
+    "district_ROCHOR_CENTRAL"
+  ]
+}

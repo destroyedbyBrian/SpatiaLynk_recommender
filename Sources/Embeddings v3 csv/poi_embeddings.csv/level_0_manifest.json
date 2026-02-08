@@ -1,0 +1,25 @@
+{
+  "level": "level_0",
+  "level_name": "Building",
+  "n_pois": 4696,
+  "dimensions": {
+    "total": 221,
+    "Y_A_explicit": 149,
+    "Y_T_derived": 72
+  },
+  "column_indices": {
+    "Y_A_range": [
+      0,
+      148
+    ],
+    "Y_T_range": [
+      149,
+      220
+    ]
+  },
+  "example_pois": [
+    "poi_0_Giant",
+    "poi_1_NTUC_FairPrice",
+    "poi_2_NTUC_FairPrice"
+  ]
+}
