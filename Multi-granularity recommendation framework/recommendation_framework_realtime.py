@@ -7,7 +7,7 @@ import math
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 import numpy as np
 
@@ -198,10 +198,12 @@ class MultiGranularityRecommendationFramework:
         interactions_file: str,
         interaction_learning_file: Optional[str] = None,
         sources_dir: Optional[str] = None,
+        poi_embeddings_file: Optional[str] = None,
     ):
         base_dir = Path(__file__).resolve().parent
 
         self.embeddings_file = _resolve_path(embeddings_file, base_dir)
+        self.poi_embeddings_file = _resolve_path(poi_embeddings_file, base_dir) if poi_embeddings_file else None
         self.poi_tree_file = _resolve_path(poi_tree_file, base_dir)
         self.users_file = _resolve_path(users_file, base_dir)
         self.interactions_file = _resolve_path(interactions_file, base_dir)
@@ -218,8 +220,11 @@ class MultiGranularityRecommendationFramework:
         self.poi_details_by_id: Dict[str, POIDetails] = {}
 
         self._load_embeddings(self.embeddings_file)
+        if self.poi_embeddings_file and self.poi_embeddings_mat.size == 0:
+            self._load_poi_embeddings_only(self.poi_embeddings_file)
         self._load_poi_tree_json(self.poi_tree_file)
         self._load_user_preferences_csv(self.users_file)
+        self.region_weights = self._build_region_weights()
 
     # ---------------------------
     # Robust Embeddings Loader
@@ -347,6 +352,35 @@ class MultiGranularityRecommendationFramework:
             norms = np.linalg.norm(self.poi_embeddings_mat, axis=1, keepdims=True) + 1e-12
             self.poi_embeddings_mat = self.poi_embeddings_mat / norms
 
+    def _load_poi_embeddings_only(self, path: Path):
+        """Load POI embeddings from a dedicated POI embeddings pickle."""
+        if not path.exists():
+            return
+
+        with open(path, "rb") as f:
+            obj = pickle.load(f)
+
+        # Expected structure from POI_Embeddings: {"poi_embeddings": {"level_0": {"embeddings": ..., "poi_ids": [...]}, ...}}
+        poi_root = obj.get("poi_embeddings")
+        if isinstance(poi_root, dict) and "level_0" in poi_root:
+            level0 = poi_root.get("level_0") or {}
+            embeddings = level0.get("embeddings")
+            poi_ids = level0.get("poi_ids")
+            if embeddings is not None:
+                self.poi_embeddings_mat = np.array(embeddings, dtype=float)
+                if isinstance(poi_ids, list):
+                    self.poi_id_to_idx = {str(pid): i for i, pid in enumerate(poi_ids)}
+
+        # Fallbacks for alternate formats
+        if self.poi_embeddings_mat.size == 0:
+            poi_raw = obj.get("poi_embeddings_mat") or obj.get("poi_vecs")
+            if poi_raw is not None:
+                self.poi_embeddings_mat = np.array(poi_raw, dtype=float)
+
+        if self.poi_embeddings_mat.size > 0:
+            norms = np.linalg.norm(self.poi_embeddings_mat, axis=1, keepdims=True) + 1e-12
+            self.poi_embeddings_mat = self.poi_embeddings_mat / norms
+
     # ---------------------------
     # POI Tree Loader (ALL levels)
     # ---------------------------
@@ -404,6 +438,21 @@ class MultiGranularityRecommendationFramework:
                     self.poi_id_to_idx[pid] = next_idx
                     next_idx += 1
 
+    def _build_region_weights(self) -> Dict[str, float]:
+        """Compute inverse-frequency region weights (mean ~ 1.0)."""
+        counts = Counter()
+        for det in self.poi_details_by_id.values():
+            region = _safe_lower(det.region)
+            if region:
+                counts[region] += 1
+
+        if not counts:
+            return {}
+
+        total = sum(counts.values())
+        avg = total / len(counts)
+        return {region: (avg / cnt) if cnt > 0 else 1.0 for region, cnt in counts.items()}
+
     # ---------------------------
     # Users CSV loader (optional)
     # ---------------------------
@@ -457,9 +506,10 @@ class MultiGranularityRecommendationFramework:
             self.user_profiles[user_id] = {**self.user_profiles.get(user_id, {}), **profile}
             return {"status": "exists", "user_id": user_id}
 
-        # initialize a new embedding vector
+        # initialize a new embedding vector (match current embedding dim)
+        dim = int(self.user_embeddings_mat.shape[1]) if self.user_embeddings_mat.size > 0 else 64
         if self.user_embeddings_mat.size == 0:
-            new_vec = np.random.normal(0, 0.01, size=(1, 64)).astype(float)
+            new_vec = np.random.normal(0, 0.01, size=(1, dim)).astype(float)
         else:
             mean_vec = np.mean(self.user_embeddings_mat, axis=0, keepdims=True)
             noise = np.random.normal(0, 0.005, size=mean_vec.shape)
@@ -508,6 +558,10 @@ class MultiGranularityRecommendationFramework:
         allowed_categories: List[str],
         prompt: str,
         user_profile: Dict[str, Any],
+        use_region_balance: bool = False,
+        region_balance_strength: float = 0.12,
+        region_balance_max: float = 1.4,
+        region_balance_min: float = 0.9,
     ) -> float:
         # embedding cosine similarity (if POI embedding exists)
         base = 0.0
@@ -545,6 +599,16 @@ class MultiGranularityRecommendationFramework:
             else:
                 score -= 0.25
 
+        # region balance (downweight overrepresented regions)
+        if use_region_balance and det.region:
+            key = _safe_lower(det.region)
+            w = self.region_weights.get(key, 1.0)
+            if region_balance_max:
+                w = min(float(w), float(region_balance_max))
+            if region_balance_min:
+                w = max(float(w), float(region_balance_min))
+            score += float(region_balance_strength) * (float(w) - 1.0)
+
         return score
 
     # ---------------------------
@@ -558,6 +622,11 @@ class MultiGranularityRecommendationFramework:
         prompt: str = "",
         use_intent_filter: bool = True,
         current_location: Optional[Dict[str, float]] = None,  # NEW
+        levels: Optional[List[str]] = None,
+        use_region_balance: bool = False,
+        region_balance_strength: float = 0.12,
+        region_balance_max: float = 1.4,
+        region_balance_min: float = 0.9,
     ) -> Dict[str, List[Dict[str, Any]]]:
 
         user_id = str(user_id).strip()
@@ -584,11 +653,15 @@ class MultiGranularityRecommendationFramework:
 
         min_results = max(10, int(top_k))
 
+        allowed_levels = {str(lvl) for lvl in levels} if levels else None
+
         def score_with_filter(allowed: Optional[List[str]], max_radius_km: Optional[float]):
             out: List[Tuple[str, float]] = []
             allowed_set = set(allowed) if allowed else None
 
             for pid, det in self.poi_details_by_id.items():
+                if allowed_levels is not None and det.level not in allowed_levels:
+                    continue
                 cat = _safe_lower(det.category)
                 if allowed_set is not None and cat and cat not in allowed_set:
                     continue
@@ -599,7 +672,18 @@ class MultiGranularityRecommendationFramework:
                     if max_radius_km is not None and d_km > max_radius_km:
                         continue
 
-                base_score = self._score_user_poi(uvec, pid, det, allowed or [], prompt, user_profile)
+                base_score = self._score_user_poi(
+                    uvec,
+                    pid,
+                    det,
+                    allowed or [],
+                    prompt,
+                    user_profile,
+                    use_region_balance=use_region_balance,
+                    region_balance_strength=region_balance_strength,
+                    region_balance_max=region_balance_max,
+                    region_balance_min=region_balance_min,
+                )
                 score = base_score + _distance_bonus_km(d_km)
                 out.append((pid, score))
 
@@ -671,4 +755,7 @@ class MultiGranularityRecommendationFramework:
             }
             buckets[lvl].append(item)
 
+        if levels:
+            allowed = {str(lvl) for lvl in levels}
+            buckets = {k: v for k, v in buckets.items() if k in allowed}
         return buckets

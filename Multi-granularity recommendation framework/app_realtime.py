@@ -23,6 +23,10 @@ class RecommendationRequest(BaseModel):
     userId: str
     prompt: str
     currentLocation: Optional[Dict[str, float]] = None
+    useRegionBalance: Optional[bool] = True
+    regionBalanceStrength: Optional[float] = None
+    regionBalanceMax: Optional[float] = None
+    regionBalanceMin: Optional[float] = None
 
 
 app = FastAPI(
@@ -73,7 +77,8 @@ print("=" * 70)
 try:
     base_dir = Path(__file__).resolve().parent
     framework = MultiGranularityRecommendationFramework(
-        embeddings_file=_resolve(base_dir, "embeddings.pkl"),
+        embeddings_file=_resolve(base_dir, "user_embeddings.pkl"),
+        poi_embeddings_file=_resolve(base_dir, "poi_embeddings.pkl"),
         interaction_learning_file=_resolve(base_dir, "interaction_learning.pkl"),
         poi_tree_file=_resolve(base_dir, "poi_tree_with_uuids.json"),
         users_file=_resolve(base_dir, "user_preferences.csv"),
@@ -136,6 +141,10 @@ async def get_recommendations(request: RecommendationRequest):
             prompt=request.prompt,
             use_intent_filter=True,
             current_location=request.currentLocation,  # NEW
+            use_region_balance=bool(request.useRegionBalance),
+            region_balance_strength=request.regionBalanceStrength or 0.12,
+            region_balance_max=request.regionBalanceMax or 1.4,
+            region_balance_min=request.regionBalanceMin or 0.9,
         )
         return {
             "success": True,
