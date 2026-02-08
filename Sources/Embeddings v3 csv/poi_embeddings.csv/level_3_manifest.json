@@ -1,0 +1,25 @@
+{
+  "level": "level_3",
+  "level_name": "Region",
+  "n_pois": 5,
+  "dimensions": {
+    "total": 105,
+    "Y_A_explicit": 33,
+    "Y_T_derived": 72
+  },
+  "column_indices": {
+    "Y_A_range": [
+      0,
+      32
+    ],
+    "Y_T_range": [
+      33,
+      104
+    ]
+  },
+  "example_pois": [
+    "region_EAST",
+    "region_CENTRAL",
+    "region_NORTH-EAST"
+  ]
+}

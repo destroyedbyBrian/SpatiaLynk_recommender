@@ -1,0 +1,25 @@
+{
+  "level": "level_1",
+  "level_name": "Street",
+  "n_pois": 1355,
+  "dimensions": {
+    "total": 171,
+    "Y_A_explicit": 99,
+    "Y_T_derived": 72
+  },
+  "column_indices": {
+    "Y_A_range": [
+      0,
+      98
+    ],
+    "Y_T_range": [
+      99,
+      170
+    ]
+  },
+  "example_pois": [
+    "container_FairPrice",
+    "container_Good_Price_Centre",
+    "container_Starhub"
+  ]
+}
