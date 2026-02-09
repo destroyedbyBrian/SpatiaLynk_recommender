@@ -58,45 +58,42 @@ print("\n" + "="*70)
 print("LOADING MPR PIPELINE...")
 print("="*70)
 
-def find_repo_root(start=None) -> Path:
-    start = Path(start or Path.cwd()).resolve()
-    for p in [start] + list(start.parents):
-        if (p / ".git").exists():
-            return p
-    return start
+# Get directory where app.py is located (/app in HF Spaces)
+APP_DIR = Path(__file__).parent.resolve()
 
-ROOT = find_repo_root()
+# Files are directly in /app, not in /app/Sources/
+print(f"APP_DIR: {APP_DIR}")
+print(f"Contents: {[p.name for p in APP_DIR.iterdir()]}")
 
 framework = None
-joint_embeddings_path = ROOT / "Sources" / "Embeddings v3" / "joint_optimized_final.pkl"
+joint_embeddings_path = APP_DIR / "joint_optimized_final.pkl"  # Direct in /app, no subfolder
+
+print(f"Looking for embeddings at: {joint_embeddings_path}")
 
 if joint_embeddings_path.exists():
     try:
         framework = MPR_Pipeline(
             joint_embeddings_file=str(joint_embeddings_path),
-            poi_tree_file=str(ROOT / "Sources" / "Files" / "poi_tree_with_uuids.json"),
-            users_file=str(ROOT / "Sources" / "Files" / "user_preferences.csv"),
-            interactions_file=str(ROOT / "Sources" / "Files" / "user_poi_interactions.csv")
+            poi_tree_file=str(APP_DIR / "poi_tree_with_uuids.json"),
+            users_file=str(APP_DIR / "user_preferences.csv"),
+            interactions_file=str(APP_DIR / "user_poi_interactions.csv")
         )
-        print("MPR Pipeline loaded successfully!")
-        print(f"  Users: {len(framework.users_df)}")
-        print(f"  User ID column: {framework.user_id_col}")
+        print("✅ MPR Pipeline loaded successfully!")
     except Exception as e:
-        print(f"ERROR loading MPR Pipeline: {e}")
+        print(f"❌ ERROR: {e}")
         traceback.print_exc()
         framework = None
 else:
-    print(f"joint_optimized_final.pkl not found at {joint_embeddings_path}")
-    print("Using realtime fallback only.")
+    print(f"❌ File NOT FOUND: {joint_embeddings_path}")
+    framework = None
 
-print("="*70 + "\n")
+# Update the realtime embedder paths too (flat structure)
+POI_PKL = APP_DIR / "poi_embeddings.pkl"  # Make sure you upload this file too!
+USER_STORE_PREFIX = APP_DIR / "user_vecs" / "user_vecs"
+POI_TREE_JSON = APP_DIR / "poi_tree_with_uuids.json"
 
-
-SOURCES = ROOT / "Sources"
-POI_PKL = SOURCES / "poi_embeddings.pkl"
-USER_STORE_PREFIX = SOURCES / "user_vecs" / "user_vecs"
-POI_TREE_JSON = SOURCES / "poi_tree_with_uuids.json"
-
+print(f"POI_PKL path: {POI_PKL}, exists: {POI_PKL.exists()}")
+print(f"POI_TREE_JSON path: {POI_TREE_JSON}, exists: {POI_TREE_JSON.exists()}")
 
 @dataclass(frozen=True)
 class InteractionWeights:
@@ -480,8 +477,24 @@ async def get_recommendations(request: RecommendationRequest):
                     # Generate explanation if method exists
                     if hasattr(framework, 'generate_explanation_text'):
                         try:
-                            explanation = framework.generate_explanation_text(rec, request.userId, level_num)
-                            result["explanations"][level_key].append(explanation)
+                            explanation_text = framework.generate_explanation_text(rec, request.userId, level_num)
+                            
+                            # Extract factors from score_components for the frontend
+                            components = poi_info.get('score_components', {})
+                            factors = []
+                            
+                            if components.get('distance_km') is not None:
+                                factors.append(f"Only {components['distance_km']:.1f}km away")
+                            if components.get('intent_match', 0) > 0:
+                                factors.append(f"Matches your search intent")
+                            if components.get('joint_embedding', 0) > 0.5:
+                                factors.append("Aligns with your preferences")
+                            
+                            result["explanations"][level_key].append({
+                                "poi_id": poi_id,
+                                "human_explanation": explanation_text,
+                                "top_factors": factors
+                            })
                         except Exception as e:
                             print(f"    Warning: Could not generate explanation: {e}")
                 
