@@ -11,6 +11,7 @@ from datetime import datetime
 from recommendation_framework import MultiGranularityRecommendationFramework
 import numpy as np
 from pathlib import Path
+import traceback
 
 app = FastAPI(
     title="Multi-Granularity POI Recommendation API",
@@ -58,45 +59,37 @@ print("\n" + "="*70)
 print("LOADING RECOMMENDATION FRAMEWORK...")
 print("="*70)
 
-def find_repo_root(start=None) -> Path:
-    start = Path(start or Path.cwd()).resolve()
-    for p in [start] + list(start.parents):
-        if (p / ".git").exists():
-            return p
-    return start
-
-ROOT = find_repo_root()
-
-
+APP_DIR = Path(__file__).parent.resolve()
 
 framework = None
-interaction_learning_path = ROOT / "Sources" / "interaction_learning.pkl"
-if interaction_learning_path.exists():
+joint_embeddings_path = APP_DIR / "../Sources/Embeddings v3/joint_optimized_final.pkl"
+
+if joint_embeddings_path.exists():
     try:
-        framework = MultiGranularityRecommendationFramework(
-            embeddings_file=str(ROOT / "Sources" / "user_embeddings.pkl"),
-            interaction_learning_file=str(interaction_learning_path),
-            users_file=str(ROOT / "Sources" / "user_preferences.csv"),
-            poi_tree_file=str(ROOT / "Sources" / "poi_tree_with_uuids.json"),
-            interactions_file=str(ROOT / "Sources" / "user_poi_interactions.csv"),
+        framework = MPR_Pipeline(
+            joint_embeddings_file='../Sources/Embeddings v3/joint_optimized_final.pkl',
+            poi_tree_file='../Sources/Files/poi_tree_with_uuids.json',
+            users_file='../Sources/Files/user_preferences.csv',
+            interactions_file='../Sources/Files/user_poi_interactions.csv'
         )
-        print("Framework loaded successfully!")
+        print("MPR Pipeline loaded successfully!")
+        print(f"  Users: {len(framework.users_df)}")
+        print(f"  User ID column: {framework.user_id_col}")
     except Exception as e:
-        print(f"ERROR loading framework: {e}")
+        print(f"ERROR loading MPR Pipeline: {e}")
         traceback.print_exc()
         framework = None
 else:
-    print("interaction_learning.pkl not found. Using realtime fallback only.")
+    print(f"joint_optimized_final.pkl not found at {joint_embeddings_path}")
+    print("Using realtime fallback only.")
 
 print("="*70 + "\n")
 
-# ======================================================
-# Real-time interaction embedder (lightweight)
-# ======================================================
-SOURCES = ROOT / "Sources"
+
+SOURCES = APP_DIR / "../Sources"
 POI_PKL = SOURCES / "poi_embeddings.pkl"
 USER_STORE_PREFIX = SOURCES / "user_vecs" / "user_vecs"
-POI_TREE_JSON = SOURCES / "poi_tree_with_uuids.json"
+POI_TREE_JSON = SOURCES / "Files" / "poi_tree_with_uuids.json"
 
 
 @dataclass(frozen=True)
