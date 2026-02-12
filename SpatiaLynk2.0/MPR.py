@@ -1236,164 +1236,8 @@ class MPR_Pipeline:
 		print("💡 Tip: These recommendations combine your preferences, location, and search intent")
 		print("="*80)
 
-	def folium_mapper(self, recommendations: Dict[str, List[Dict]], 
-					user_location: Optional[Dict] = None,
-					save_path: Optional[str] = None):
-		center = user_location or DEFAULT_LOCATION
-		min_lat, max_lat = 1.15, 1.47
-		min_lon, max_lon = 103.60, 104.10
-
-		m = folium.Map(
-			location=[center["latitude"], center["longitude"]],
-			zoom_start=12,
-			tiles="cartodbpositron",
-			max_bounds=True,
-			min_lat=min_lat, 
-			max_lat=max_lat,
-			min_lon=min_lon, 
-			max_lon=max_lon
-		)
-		
-		if user_location:
-			folium.CircleMarker(
-				location=[user_location["latitude"], user_location["longitude"]],
-				radius=8,
-				color='blue',
-				fill=True,
-				fill_color='blue',
-				fill_opacity=0.7,
-				popup="Your Location"
-			).add_to(m)
-		else:
-			folium.Marker(
-				location=[DEFAULT_LOCATION["latitude"], DEFAULT_LOCATION["longitude"]],
-				popup="Default (Singapore)",
-				icon=folium.Icon(color='red', icon='info-sign')
-			).add_to(m)
-		
-		level_colors = {
-			"level_0": {"color": "#2E86AB", "fill": "#A7C6DA", "radius": 6},
-			"level_1": {"color": "#A23B72", "fill": "#F18FBB", "radius": 12},
-			"level_2": {"color": "#F18F01", "fill": "#F9D78C", "radius": 20}
-		}
-		
-		level_names = {
-			"level_0": "Individual POI",
-			"level_1": "Container/Venue", 
-			"level_2": "District"
-		}
-		
-		all_coords = []
-		
-		for level_key, recs in recommendations.items():
-			if not recs:
-				continue
-				
-			level_num = int(level_key.split("_")[1])
-			style = level_colors.get(level_key, level_colors["level_0"])
-			
-			if level_key == "level_0":
-				marker_cluster = MarkerCluster(name=f"Level {level_num}").add_to(m)
-			
-			for item in recs:
-				details = item.get('details', {})
-				lat = details.get('latitude')
-				lon = details.get('longitude')
-				
-				if lat is None or lon is None:
-					lat, lon = self._get_centroid_from_tree(item['poi_id'], level_num)
-					if lat is None:
-						continue
-				
-				all_coords.append((float(lat), float(lon)))
-				
-				score = item.get('score', 0)
-				name = item.get('name', 'Unknown')
-				
-				popup_html = f"""
-				<div style="font-family: Arial, sans-serif; width: 200px;">
-					<h4 style="margin: 0; color: {style['color']};">{name}</h4>
-					<p style="margin: 5px 0; font-size: 12px;">
-						<b>Type:</b> {level_names.get(level_key, 'Unknown')}<br>
-						<b>Score:</b> {score:.3f}<br>
-						<b>ID:</b> {item['poi_id'][:20]}...
-					</p>
-				"""
-				
-				if level_key == "level_0":
-					popup_html += f"""
-						<b>Category:</b> {details.get('category', 'N/A')}<br>
-						<b>Popularity:</b> {details.get('popularity', 'N/A')}<br>
-					"""
-					if 'score_components' in details:
-						comp = details['score_components']
-						popup_html += f"""
-						<hr style="margin: 5px 0;">
-						<small>
-						Preference: {comp.get('joint_embedding', 0):.2f}<br>
-						Spatial: {comp.get('spatial', 0):.2f}
-						</small>
-						"""
-				elif level_key == "level_1":
-					popup_html += f"<b>Contains:</b> {details.get('num_pois', 0)} POIs<br>"
-				elif level_key == "level_2":
-					popup_html += f"<b>Contains:</b> {details.get('num_venues', 0)} venues<br>"
-				
-				popup_html += "</div>"
-				
-				if level_key == "level_0":
-					folium.CircleMarker(
-						location=[lat, lon],
-						radius=style['radius'],
-						popup=folium.Popup(popup_html, max_width=250),
-						tooltip=name,
-						color=style['color'],
-						fill=True,
-						fill_color=style['fill'],
-						fill_opacity=0.8,
-						weight=2
-					).add_to(marker_cluster)
-					
-				else:
-					folium.Circle(
-						location=[lat, lon],
-						radius=style['radius'] * 10,
-						popup=folium.Popup(popup_html, max_width=300),
-						tooltip=f"{name} ({level_names[level_key]})",
-						color=style['color'],
-						fill=True,
-						fill_color=style['fill'],
-						fill_opacity=0.4,
-						weight=3
-					).add_to(m)
-		
-		if all_coords:
-			m.fit_bounds(
-				[[min(c[0] for c in all_coords), min(c[1] for c in all_coords)],
-				[max(c[0] for c in all_coords), max(c[1] for c in all_coords)]],
-				padding=(50, 50)
-			)
-		
-		folium.LayerControl().add_to(m)
-		
-		if save_path:
-			m.save(save_path)
-			print(f"Map saved to {save_path}")
-		
-		print(f"Plotted {len(all_coords)} POIs across {len([r for r in recommendations.values() if r])} levels")
-		return m, all_coords
-
 	def add_user_profile(self, profile: Dict[str, str]) -> Dict[str, str]:
-		"""
-		Add a new user to the system for cold start handling.
-		Creates embedding vector from interest categories.
 		
-		Args:
-			profile: Dict with 'user_id' and 'interests' (semicolon-separated)
-			
-		Returns:
-			Dict with status, user_id, and idx
-		"""
 		user_id = str(profile.get("user_id", "")).strip()
 		interests_raw = str(profile.get("interests", "")).lower()
 		
@@ -1441,7 +1285,16 @@ class MPR_Pipeline:
 		# Add explicit interests to affinity counter immediately
 		for i in user_interests:
 			self.category_affinity[user_id][i] += 3 # Start with a strong bias
-			
+		
+		new_row = pd.DataFrame([{
+			self.user_id_col: user_id,
+			'name': profile.get('name', user_id[:8] + ''), 
+			'interests': interests_raw,
+			'area_of_residence': profile.get('area', ''),  # Optional: pass area in profile
+			'price_sensitivity': profile.get('price_sensitivity', 'medium')
+		}])
+		self.users_df = pd.concat([self.users_df, new_row], ignore_index=True)
+				
 		return {"status": "created", "user_id": user_id, "idx": new_idx}
 	
 	def compute_interaction_boost(self, user_id: str, poi_id: str, level: int) -> float:

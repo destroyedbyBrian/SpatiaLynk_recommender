@@ -7,7 +7,7 @@ import math
 import pickle
 import traceback
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timezone
 from MPR import MPR_Pipeline 
 import numpy as np
 from pathlib import Path
@@ -66,7 +66,7 @@ class ExplanationResponse(BaseModel):
     top_contributing_factors: List[str]
     similar_visited_pois: List[Dict[str, str]]
     user_context: Dict[str, str]
-    confidence_indicator: str  # "strong", "good", "potential"
+    confidence_indicator: str
 
 
 class RecommendationWithExplanation(BaseModel):
@@ -383,12 +383,11 @@ async def handle_interaction(payload: InteractionPayload):
 
     return {"ok": True, "user_id": uid, "poi_id": pid}
 
-
 @app.post("/recommend")
 async def get_recommendations(request: RecommendationRequest):
     # Cache key
     cache_key = _make_cache_key(request.userId, request.prompt, request.currentLocation)
-    now_ts = datetime().timestamp()
+    now_ts = datetime.now(timezone.utc).timestamp()
     if cache_key in _REC_CACHE_TS and (now_ts - _REC_CACHE_TS[cache_key]) <= _REC_CACHE_TTL_SECONDS:
         return _REC_CACHE[cache_key]
 
@@ -424,9 +423,14 @@ async def get_recommendations(request: RecommendationRequest):
             "success": True,
             "userId": uid,
             "prompt": request.prompt,
-            "recommendations": {"level_0": recs},
-            "explanations": {"level_0": []},
-            "mode": "realtime_fallback"
+            "recommendations": {"level_0": recs, "level_1": [], "level_2": []},
+            "explanations": {"level_0": [], "level_1": [], "level_2": []},
+            "mode": "realtime_fallback",
+            "summary": {
+                "total_recommendations": len(recs),
+                "prompt_type": "fallback",
+                "detected_intent": None
+            }
         }
         _REC_CACHE[cache_key] = resp
         _REC_CACHE_TS[cache_key] = now_ts
@@ -460,7 +464,6 @@ async def get_recommendations(request: RecommendationRequest):
                 filter_visited=True
             )
 
-            result_recs = {}
             global_explanation_stats = {
                 "total_recommendations": 0,
                 "average_confidence": 0,
@@ -482,20 +485,27 @@ async def get_recommendations(request: RecommendationRequest):
             traceback.print_exc()
             raise HTTPException(status_code=500, detail=f"Error generating recommendations: {str(e)}")
         
-        # Step 3: Build response
+        # Step 3: Build response - Option B: Use result dictionary consistently
         print("\n[STEP 3] Building response...")
         result = {
             "success": True,
             "userId": request.userId,
             "prompt": request.prompt,
-            "recommendations": {},
-            "explanations": {}
+            "mode": "mpr_multi_granularity",
+            "recommendations": {
+                "level_0": [],
+                "level_1": [],
+                "level_2": []
+            },
+            # "explanations": {
+            #     "level_0": [],
+            #     "level_1": [],
+            #     "level_2": []
+            # }
         }
         
         for level_key, recs in recommendations.items():
             print(f"\n  Processing {level_key}...")
-            result["recommendations"][level_key] = []
-            result["explanations"][level_key] = []
             
             # Extract level number for coordinate lookup
             level_num = int(level_key.split("_")[1])
@@ -506,7 +516,6 @@ async def get_recommendations(request: RecommendationRequest):
                     score = rec['score']
                     poi_info = rec['details']  # Contains score_components, category, lat/lon, etc.
                     
-            
                     latitude = poi_info.get('latitude')
                     longitude = poi_info.get('longitude')
 
@@ -524,7 +533,7 @@ async def get_recommendations(request: RecommendationRequest):
                                 if isinstance(poi_spatial, (list, tuple)) and len(poi_spatial) >= 2:
                                     latitude, longitude = poi_spatial[0], poi_spatial[1]
                     
-                    # Add recommendation
+                    # Build recommendation data
                     rec_data = {
                         "poi_id": poi_id,
                         "name": rec.get('name', 'Unknown'),
@@ -536,8 +545,8 @@ async def get_recommendations(request: RecommendationRequest):
                             "longitude": longitude,
                         }
                     }
-                    result["recommendations"][level_key].append(rec_data)
                     
+                    # Add explanation if requested
                     if request.includeExplanations:
                         try:
                             explanation = framework.explain_recommendation_enhanced(
@@ -574,7 +583,8 @@ async def get_recommendations(request: RecommendationRequest):
                         except Exception as e:
                             print(f"Warning: Could not generate explanation for {poi_id}: {e}")
                     
-                    result_recs[level_key].append(rec_data)
+                    # Append to result using Option B pattern
+                    result["recommendations"][level_key].append(rec_data)
                     global_explanation_stats["total_recommendations"] += 1
                     
                 except Exception as e:
@@ -594,23 +604,20 @@ async def get_recommendations(request: RecommendationRequest):
                 reverse=True
             )[:3]
         
-        response = {
-            "success": True,
-            "userId": request.userId,
-            "prompt": request.prompt,
-            "mode": "mpr_multi_granularity",
-            "recommendations": result_recs,
-            "summary": {
-                "total_recommendations": global_explanation_stats["total_recommendations"],
-                "explanation_stats": global_explanation_stats if request.includeExplanations else None,
-                "prompt_type": getattr(framework, 'last_prompt_type', 'unknown'),
-                "detected_intent": getattr(framework, 'last_intent', None)
-            }
+        # Add summary to result
+        result["summary"] = {
+            "total_recommendations": global_explanation_stats["total_recommendations"],
+            "explanation_stats": global_explanation_stats if request.includeExplanations else None,
+            "prompt_type": getattr(framework, 'last_prompt_type', 'unknown'),
+            "detected_intent": getattr(framework, 'last_intent', None)
         }
         
-        _REC_CACHE[cache_key] = response
+        # Cache and return
+        _REC_CACHE[cache_key] = result
         _REC_CACHE_TS[cache_key] = now_ts
-        return response
+        
+        print(f"\n[STEP 4] Returning {global_explanation_stats['total_recommendations']} recommendations")
+        return result
         
     except HTTPException:
         raise
