@@ -912,10 +912,25 @@ class MPR_Pipeline:
 		history_count = len(self.user_history.get(user_id, {}).get(0, [])) + \
 						len(self.user_ratings.get(user_id, {}))
 		
-		# Alpha: How much to rely on "Static Interests" vs "Observed Behavior"
-		# New users: alpha ~ 1.0 (Rely on what they said)
-		# Old users: alpha ~ 0.0 (Rely on what they do)
-		alpha = max(0.0, 1.0 - (history_count / 10.0)) 
+		# Calculate effective interaction count with quality weights
+		visits = len(self.user_history.get(user_id, {}).get(0, []))
+		ratings = len(self.user_ratings.get(user_id, {}))
+		
+		# Count views from interactions DataFrame (lightweight interactions)
+		user_interactions = self.interactions_df[self.interactions_df['user_id'] == user_id]
+		view_count = len(user_interactions[user_interactions['interaction_type'] == 'view'])
+		
+		# Quality weights: Ratings matter most, views matter least
+		# Ratings (2.0): Explicit preference signal
+		# Visits (1.0): Strong behavioral signal  
+		# Views (0.1): Weak implicit signal (barely counts)
+		effective_count = (ratings * 2.0) + (visits * 1.0) + (view_count * 0.1)
+		
+		# Smoother decay with floor: 
+		# - 0 effective interactions = 100% interests (alpha=1.0)
+		# - 20 effective interactions = 50% interests (alpha=0.5)
+		# - 40+ effective interactions = 30% interests minimum (alpha=0.3)
+		alpha = max(0.3, 1.0 - (effective_count / 40.0))
 
 		candidates = list(self.idx_to_poi_id[level].values())
 		scored_items = []
@@ -1237,61 +1252,72 @@ class MPR_Pipeline:
 		print("="*80)
 
 	def add_user_profile(self, profile: Dict[str, str]) -> Dict[str, str]:
-		
 		user_id = str(profile.get("user_id", "")).strip()
 		interests_raw = str(profile.get("interests", "")).lower()
+		price_sensitivity = profile.get("price_sensitivity", "medium")
+		transport_modes = profile.get("transportation_modes", "bus")
 		
 		if not user_id:
 			return {"status": "error", "message": "user_id required"}
 		
-		# 1. Parse interests
+		# Calculate the proper vector based on interests (do this for both new and existing)
 		user_interests = [i.strip() for i in interests_raw.replace(',', ';').split(';') if i.strip()]
 		
-		# 2. Construct Vector from Interests (Not Random Noise)
 		vectors_to_average = []
 		for interest in user_interests:
-			# Try exact match first
 			if interest in self.mean_category_vectors:
 				vectors_to_average.append(self.mean_category_vectors[interest])
 			else:
-				# Try partial match (e.g. "coffee" matches "cafe")
+				# Fuzzy match
 				for cat, vec in self.mean_category_vectors.items():
 					if interest in cat or cat in interest:
 						vectors_to_average.append(vec)
 						break
 		
 		if vectors_to_average:
-			# Average the vectors of what they like
 			new_vec = np.mean(vectors_to_average, axis=0, keepdims=True)
 		else:
-			# True Cold Start (No interests provided): Use Global Average of all users
+			# Cold start: use global average
 			new_vec = np.mean(self.U_u, axis=0, keepdims=True)
 			
-		# Add some slight noise to prevent identical vectors for same-interest users
+		# Add slight noise to prevent identical vectors
 		noise = np.random.normal(0, 0.005, size=new_vec.shape)
 		new_vec = new_vec + noise
 		new_vec = new_vec / (np.linalg.norm(new_vec, axis=1, keepdims=True) + 1e-12)
 		
-		# Add to Matrix
+		if user_id in self.user_id_to_idx:
+			idx = self.user_id_to_idx[user_id]
+			
+			self.U_u[idx] = new_vec
+			
+			self.users_df.at[idx, 'interests'] = interests_raw
+			self.users_df.at[idx, 'price_sensitivity'] = price_sensitivity
+			self.users_df.at[idx, 'transportation_modes'] = transport_modes
+			
+			self.category_affinity[user_id] = Counter()
+			for i in user_interests:
+				self.category_affinity[user_id][i] += 3  # Strong initial bias
+				
+			return {"status": "updated", "user_id": user_id, "idx": idx}
+		
 		self.U_u = np.vstack([self.U_u, new_vec])
 		new_idx = int(self.U_u.shape[0] - 1)
 		self.user_id_to_idx[user_id] = new_idx
 		self.idx_to_user_id[new_idx] = user_id
 		
-		# Initialize empty history
 		self.user_history[user_id] = defaultdict(list)
 		self.category_affinity[user_id] = Counter()
 		
-		# Add explicit interests to affinity counter immediately
 		for i in user_interests:
-			self.category_affinity[user_id][i] += 3 # Start with a strong bias
+			self.category_affinity[user_id][i] += 3
 		
 		new_row = pd.DataFrame([{
 			self.user_id_col: user_id,
-			'name': profile.get('name', user_id[:8] + ''), 
+			'name': profile.get('name', user_id[:8]), 
 			'interests': interests_raw,
-			'area_of_residence': profile.get('area', ''),  # Optional: pass area in profile
-			'price_sensitivity': profile.get('price_sensitivity', 'medium')
+			'area_of_residence': profile.get('area', ''),
+			'price_sensitivity': price_sensitivity,
+			'transportation_modes': transport_modes
 		}])
 		self.users_df = pd.concat([self.users_df, new_row], ignore_index=True)
 				

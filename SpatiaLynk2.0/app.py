@@ -98,7 +98,8 @@ class InteractionPayload(BaseModel):
 class UserProfileRequest(BaseModel):
     user_id: str
     interests: str  # Semicolon-separated list of interests (e.g., "food;coffee;shopping")
-
+    budget: Optional[str] = "medium" 
+    transport_modes: Optional[str] = "bus" 
 
 # Load framework
 print("\n" + "="*70)
@@ -313,17 +314,15 @@ async def health_check():
 
 @app.post("/add_user")
 async def add_user(profile: UserProfileRequest):
-    """
-    Add a new user profile for cold-start recommendation.
-    Interests should be semicolon-separated (e.g., "food;coffee;shopping").
-    """
     if framework is None:
         raise HTTPException(status_code=503, detail="MPR Framework not loaded")
     
     try:
         result = framework.add_user_profile({
             "user_id": profile.user_id,
-            "interests": profile.interests
+            "interests": profile.interests,
+            "price_sensitivity": profile.budget,  
+            "transportation_modes": profile.transport_modes
         })
         
         if result.get("status") == "error":
@@ -340,7 +339,11 @@ async def add_user(profile: UserProfileRequest):
             "success": True,
             "user_id": result.get("user_id"),
             "idx": result.get("idx"),
-            "message": "User created successfully"
+            "stored_profile": {
+                "interests": profile.interests,
+                "budget": profile.budget,
+                "transport": profile.transport_modes
+            }
         }
         
     except HTTPException:
